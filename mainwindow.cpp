@@ -21,9 +21,12 @@ void MainWindow::on_pushButton_clicked()
     case 0:
         ui->item0->setText(ui->itemToPushedLineEdit->text());
         break;
+    case 1:
+        ui->item1->setText(ui->itemToPushedLineEdit->text());
     default:
         break;
     }
 
     this->itemStack.push(ui->itemToPushedLineEdit->text().toStdString());
+    ui->itemToPushedLineEdit->clear();
 }
