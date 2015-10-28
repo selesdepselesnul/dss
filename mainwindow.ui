@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>360</y>
+      <x>200</x>
+      <y>380</y>
       <width>101</width>
       <height>22</height>
      </rect>
@@ -36,9 +36,9 @@
    <widget class="QLineEdit" name="itemToPushedLineEdit">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>360</y>
-      <width>113</width>
+      <x>300</x>
+      <y>380</y>
+      <width>81</width>
       <height>22</height>
      </rect>
     </property>
@@ -46,8 +46,8 @@
    <widget class="QPushButton" name="popButton">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>30</y>
+      <x>270</x>
+      <y>40</y>
       <width>111</width>
       <height>22</height>
      </rect>
@@ -56,54 +56,12 @@
      <string>Pop</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>270</x>
       <y>70</y>
-      <width>110</width>
-      <height>276</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLineEdit" name="item9"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item8"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item7"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item6"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item5"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item4"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item3"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item2"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item1"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="item0"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>70</y>
-      <width>28</width>
+      <width>31</width>
       <height>281</height>
      </rect>
     </property>
@@ -180,39 +138,155 @@
      </item>
     </layout>
    </widget>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_9</zorder>
-   <zorder>item9</zorder>
-   <zorder>item0</zorder>
-   <zorder>item8</zorder>
-   <zorder>item7</zorder>
-   <zorder>item6</zorder>
-   <zorder>item5</zorder>
-   <zorder>item4</zorder>
-   <zorder>item3</zorder>
-   <zorder>item2</zorder>
-   <zorder>item1</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_9</zorder>
-   <zorder>label_10</zorder>
+   <widget class="QCommandLinkButton" name="topLabel">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>320</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TOP</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item2">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>267</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item3">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>239</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item7">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>127</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item8">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>99</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item1">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>295</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item4">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>211</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item6">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>155</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item5">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>183</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item9">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>71</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="item0">
+    <property name="geometry">
+     <rect>
+      <x>321</x>
+      <y>323</y>
+      <width>59</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
    <zorder>pushButton</zorder>
    <zorder>itemToPushedLineEdit</zorder>
-   <zorder>item0</zorder>
    <zorder>popButton</zorder>
+   <zorder>topLabel</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
