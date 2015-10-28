@@ -1,15 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QLineEdit>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    this->widgetStack.push(ui->item0);
-
 }
 
 MainWindow::~MainWindow()
@@ -19,5 +17,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-//    this->widgetStack.pop().setText(ui->itemToPushedLineEdit->text().toStdString());
+    switch (this->itemStack.size()) {
+    case 0:
+        ui->item0->setText(ui->itemToPushedLineEdit->text());
+        break;
+    default:
+        break;
+    }
+
+    this->itemStack.push(ui->itemToPushedLineEdit->text().toStdString());
 }

@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <stack>
+#include <QLineEdit>
 #include <QStack>
-#include <QtWidgets/QLineEdit>
 
 namespace Ui {
 class MainWindow;
@@ -22,7 +23,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    std::stack<std::string> itemStack;
     QStack<QLineEdit> widgetStack;
+
 };
 
 #endif // MAINWINDOW_H
