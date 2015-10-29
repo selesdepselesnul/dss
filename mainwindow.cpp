@@ -58,7 +58,6 @@ void MainWindow::onPushButtonClicked() {
 }
 
 void MainWindow::showDialog(std::string message) {
-
     QMessageBox::information(this, "tidak valid",
                              QString::fromStdString(message));
 }
