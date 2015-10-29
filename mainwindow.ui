@@ -281,12 +281,49 @@
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>layoutWidget</zorder>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>360</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>SIZE = </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="sizeLabel">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>item2</zorder>
+   <zorder>item3</zorder>
+   <zorder>item7</zorder>
+   <zorder>item8</zorder>
+   <zorder>item1</zorder>
+   <zorder>item4</zorder>
+   <zorder>item6</zorder>
+   <zorder>item5</zorder>
+   <zorder>item9</zorder>
+   <zorder>item0</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>pushButton</zorder>
    <zorder>itemToPushedLineEdit</zorder>
    <zorder>popButton</zorder>
    <zorder>topLabel</zorder>
+   <zorder>label_11</zorder>
+   <zorder>sizeLabel</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

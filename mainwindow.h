@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include <stack>
-#include <QLineEdit>
-#include <QStack>
 
 namespace Ui {
 class MainWindow;
@@ -20,11 +18,14 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_popButton_clicked();
+
 private:
+    static const int MAX_SIZE = 10;
+    void showDialog(std::string message);
     Ui::MainWindow *ui;
     std::stack<std::string> itemStack;
-    QStack<QLineEdit> widgetStack;
-
+    void pushToLineEdit();
 };
 
 #endif // MAINWINDOW_H
