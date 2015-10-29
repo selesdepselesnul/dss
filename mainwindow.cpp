@@ -35,7 +35,7 @@ void MainWindow::pushToLineEdit() {
     if(item != "") {
         const int size = this->stringStack->size();
         this->qLineEditList.at(size)->setText(item);
-        if(size < 9) {
+        if(size < this->qLineEditList.size() - 1) {
             ui->topLabel->move(ui->topLabel->x(),
                                this->qLineEditList.at(size + 1)->y());
         } else {
