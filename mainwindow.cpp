@@ -4,11 +4,18 @@
 #include <QMessageBox>
 #include <string>
 #include <QString>
+#include <QPushButton>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
+    connect(ui->pushButton, &QPushButton::clicked,
+            this, &MainWindow::onPushButtonClicked);
+    connect(ui->popButton, &QPushButton::clicked,
+            this, &MainWindow::onPopButtonClicked);
+
 }
 
 MainWindow::~MainWindow() {
@@ -79,7 +86,7 @@ void MainWindow::pushToLineEdit() {
     }
 }
 
-void MainWindow::on_pushButton_clicked() {
+void MainWindow::onPushButtonClicked() {
     if(this->itemStack.size() != MainWindow::MAX_SIZE) {
         pushToLineEdit();
     } else {
@@ -94,8 +101,8 @@ void MainWindow::showDialog(std::string message) {
     msgBox.exec();
 }
 
-void MainWindow::on_popButton_clicked() {
-    if(this->itemStack.size() != 0) {
+void MainWindow::onPopButtonClicked() {
+      if(this->itemStack.size() != 0) {
         switch (this->itemStack.size()) {
         case 10:
             ui->topLabel->move(ui->topLabel->x(), ui->item9->y());

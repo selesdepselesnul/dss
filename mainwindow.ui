@@ -329,6 +329,16 @@
      <string>S[0]</string>
     </property>
    </widget>
+   <zorder>stack9</zorder>
+   <zorder>stack8</zorder>
+   <zorder>stack7</zorder>
+   <zorder>stack6</zorder>
+   <zorder>stack5</zorder>
+   <zorder>stack4</zorder>
+   <zorder>stack3</zorder>
+   <zorder>stack2</zorder>
+   <zorder>stack1</zorder>
+   <zorder>stack0</zorder>
    <zorder>item2</zorder>
    <zorder>item3</zorder>
    <zorder>item7</zorder>
@@ -339,13 +349,10 @@
    <zorder>item5</zorder>
    <zorder>item9</zorder>
    <zorder>item0</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>pushButton</zorder>
    <zorder>itemToPushedLineEdit</zorder>
    <zorder>popButton</zorder>
    <zorder>topLabel</zorder>
-   <zorder>label_11</zorder>
-   <zorder>sizeLabel</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

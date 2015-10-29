@@ -17,9 +17,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
-    void on_popButton_clicked();
-
+//    void on_pushButton_clicked();
+//    void on_popButton_clicked();
+    void onPushButtonClicked();
+    void onPopButtonClicked();
 private:
     static const int MAX_SIZE = 10;
     void showDialog(std::string message);
