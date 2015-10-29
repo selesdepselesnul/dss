@@ -5,11 +5,13 @@
 #include <string>
 #include <QString>
 #include <QPushButton>
+#include "stack.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    this->stringStack = new Stack<std::string>(10);
 
     connect(ui->pushButton, &QPushButton::clicked,
             this, &MainWindow::onPushButtonClicked);
@@ -26,7 +28,7 @@ MainWindow::~MainWindow() {
 void MainWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
     if(item != "") {
-        switch (this->itemStack.size()) {
+        switch (this->stringStack->size()) {
             case 0:
             ui->item0->setText(item);
             ui->topLabel->move(ui->topLabel->x(),
@@ -80,14 +82,14 @@ void MainWindow::pushToLineEdit() {
             default:
             break;
         }
-       this->itemStack.push(ui->itemToPushedLineEdit->text().toStdString());
+       this->stringStack->push(ui->itemToPushedLineEdit->text().toStdString());
     } else {
         showDialog("item tidak boleh kosong !");
     }
 }
 
 void MainWindow::onPushButtonClicked() {
-    if(this->itemStack.size() != MainWindow::MAX_SIZE) {
+    if(this->stringStack->size() != MainWindow::MAX_SIZE) {
         pushToLineEdit();
     } else {
         showDialog("item penuh !");
@@ -96,14 +98,14 @@ void MainWindow::onPushButtonClicked() {
 }
 
 void MainWindow::showDialog(std::string message) {
-    QMessageBox msgBox;
-    msgBox.setText(QString::fromStdString(message));
-    msgBox.exec();
+
+    QMessageBox::information(this, "tidak valid",
+                             QString::fromStdString(message));
 }
 
 void MainWindow::onPopButtonClicked() {
-      if(this->itemStack.size() != 0) {
-        switch (this->itemStack.size()) {
+      if(this->stringStack->size() != 0) {
+        switch (this->stringStack->size()) {
         case 10:
             ui->topLabel->move(ui->topLabel->x(), ui->item9->y());
             break;
@@ -138,8 +140,8 @@ void MainWindow::onPopButtonClicked() {
             break;
         }
         ui->itemToPushedLineEdit->setText(
-                    QString::fromStdString(this->itemStack.top().c_str()));
-        this->itemStack.pop();
+                    QString::fromStdString(this->stringStack->peek()));
+        this->stringStack->pop();
       } else {
         showDialog("item kosong !");
     }

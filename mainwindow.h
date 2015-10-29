@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <stack>
+#include "stack.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,15 +17,13 @@ public:
     ~MainWindow();
 
 private slots:
-//    void on_pushButton_clicked();
-//    void on_popButton_clicked();
     void onPushButtonClicked();
     void onPopButtonClicked();
 private:
     static const int MAX_SIZE = 10;
     void showDialog(std::string message);
     Ui::MainWindow *ui;
-    std::stack<std::string> itemStack;
+    Stack<std::string> *stringStack;
     void pushToLineEdit();
 };
 
