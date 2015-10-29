@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "stack.h"
+#include <QList>
+#include <QLineEdit>
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +24,7 @@ private slots:
 private:
     void showDialog(std::string message);
     Ui::MainWindow *ui;
+    QList<QLineEdit*> qLineEditList;
     Stack<std::string> *stringStack;
     void pushToLineEdit();
 };
