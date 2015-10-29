@@ -13,14 +13,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow();
     ~MainWindow();
 
 private slots:
     void onPushButtonClicked();
     void onPopButtonClicked();
 private:
-    static const int MAX_SIZE = 10;
     void showDialog(std::string message);
     Ui::MainWindow *ui;
     Stack<std::string> *stringStack;

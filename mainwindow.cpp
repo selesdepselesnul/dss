@@ -7,8 +7,7 @@
 #include <QPushButton>
 #include "stack.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow() :
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->stringStack = new Stack<std::string>(10);
@@ -89,10 +88,10 @@ void MainWindow::pushToLineEdit() {
 }
 
 void MainWindow::onPushButtonClicked() {
-    if(this->stringStack->size() != MainWindow::MAX_SIZE) {
+    if(this->stringStack->size() != this->stringStack->getLength()) {
         pushToLineEdit();
     } else {
-        showDialog("item penuh !");
+        showDialog("Stack penuh!");
     }
     ui->itemToPushedLineEdit->clear();
 }
@@ -143,6 +142,6 @@ void MainWindow::onPopButtonClicked() {
                     QString::fromStdString(this->stringStack->peek()));
         this->stringStack->pop();
       } else {
-        showDialog("item kosong !");
+        showDialog("Stack kosong!");
     }
 }
