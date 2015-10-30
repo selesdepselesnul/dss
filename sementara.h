@@ -1,10 +1,10 @@
-#ifndef STACKWINDOW_H
-#define STACKWINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QString>
 #include "stack.h"
+#include <QList>
+#include <QLineEdit>
+#include <QWidget>
 
 namespace Ui {
 class StackWindow;
@@ -22,11 +22,11 @@ private slots:
     void onPushButtonClicked();
     void onPopButtonClicked();
 private:
-    void showDialog(QString message);
+    void showDialog(std::string message);
     Ui::StackWindow *ui;
     QList<QLineEdit*> qLineEditList;
-    Stack<QString> *stringStack;
+    Stack<std::string> *stringStack;
     void pushToLineEdit();
 };
 
-#endif // STACKWINDOW_H
+#endif // MAINWINDOW_H

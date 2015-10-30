@@ -1,5 +1,5 @@
-#include "stackwindow.h"
-#include "ui_stackwindow.h"
+#include "sementara.h"
+#include "ui_mainwindow.h"
 #include <QLineEdit>
 #include <QMessageBox>
 #include <string>
@@ -11,12 +11,12 @@
 StackWindow::StackWindow() :
     ui(new Ui::StackWindow) {
     ui->setupUi(this);
-    this->qLineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
+    this->qLineEditList << ui->item0 << ui->item2 << ui->item2 << ui->item3
                         << ui->item4 << ui->item5 << ui->item6 << ui->item7
                         << ui->item8 << ui->item9;
 
 
-    this->stringStack = new Stack<QString>(10);
+    this->stringStack = new Stack<std::string>(10);
 
     connect(ui->pushButton, &QPushButton::clicked,
             this, &StackWindow::onPushButtonClicked);
@@ -42,7 +42,7 @@ void StackWindow::pushToLineEdit() {
             ui->topLabel->move(ui->topLabel->x(),
                                ui->popButton->y());
         }
-        this->stringStack->push(ui->itemToPushedLineEdit->text());
+        this->stringStack->push(ui->itemToPushedLineEdit->text().toStdString());
     } else {
         showDialog("item tidak boleh kosong !");
     }
@@ -57,8 +57,9 @@ void StackWindow::onPushButtonClicked() {
     ui->itemToPushedLineEdit->clear();
 }
 
-void StackWindow::showDialog(QString message) {
-    QMessageBox::information(this, "tidak valid", message);
+void StackWindow::showDialog(std::string message) {
+    QMessageBox::information(this, "tidak valid",
+                             QString::fromStdString(message));
 }
 
 void StackWindow::onPopButtonClicked() {
@@ -66,7 +67,8 @@ void StackWindow::onPopButtonClicked() {
       if(size != 0) {
         ui->topLabel->move(ui->topLabel->x(),
                     this->qLineEditList.at(size - 1)->y());
-        ui->itemToPushedLineEdit->setText(this->stringStack->peek());
+        ui->itemToPushedLineEdit->setText(
+                    QString::fromStdString(this->stringStack->peek()));
         this->stringStack->pop();
       } else {
         showDialog("Stack kosong!");
