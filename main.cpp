@@ -1,10 +1,10 @@
-#include "mainwindow.h"
+#include "stackwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow mainWindow;
+    StackWindow mainWindow;
     mainWindow.show();
     mainWindow.setWindowTitle("Stack");
 

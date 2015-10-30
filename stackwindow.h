@@ -10,13 +10,13 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class StackWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow();
-    ~MainWindow();
+    explicit StackWindow();
+    ~StackWindow();
 
 private slots:
     void onPushButtonClicked();

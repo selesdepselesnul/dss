@@ -12,10 +12,12 @@ TARGET = data_structure_simulation
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    stackwindow.cpp
 
-HEADERS  += mainwindow.h \
-    stack.h
+HEADERS  += \
+    stack.h \
+    stackwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    stackwindow.ui

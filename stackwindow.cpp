@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "stackwindow.h"
 #include "ui_mainwindow.h"
 #include <QLineEdit>
 #include <QMessageBox>
@@ -8,7 +8,7 @@
 #include "stack.h"
 #include <QList>
 
-MainWindow::MainWindow() :
+StackWindow::StackWindow() :
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->qLineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
@@ -19,18 +19,18 @@ MainWindow::MainWindow() :
     this->stringStack = new Stack<std::string>(10);
 
     connect(ui->pushButton, &QPushButton::clicked,
-            this, &MainWindow::onPushButtonClicked);
+            this, &StackWindow::onPushButtonClicked);
     connect(ui->popButton, &QPushButton::clicked,
-            this, &MainWindow::onPopButtonClicked);
+            this, &StackWindow::onPopButtonClicked);
 
 }
 
-MainWindow::~MainWindow() {
+StackWindow::~StackWindow() {
     delete ui;
 }
 
 
-void MainWindow::pushToLineEdit() {
+void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
     if(item != "") {
         const int size = this->stringStack->size();
@@ -48,7 +48,7 @@ void MainWindow::pushToLineEdit() {
     }
 }
 
-void MainWindow::onPushButtonClicked() {
+void StackWindow::onPushButtonClicked() {
     if(this->stringStack->size() != this->stringStack->getLength()) {
         pushToLineEdit();
     } else {
@@ -57,12 +57,12 @@ void MainWindow::onPushButtonClicked() {
     ui->itemToPushedLineEdit->clear();
 }
 
-void MainWindow::showDialog(std::string message) {
+void StackWindow::showDialog(std::string message) {
     QMessageBox::information(this, "tidak valid",
                              QString::fromStdString(message));
 }
 
-void MainWindow::onPopButtonClicked() {
+void StackWindow::onPopButtonClicked() {
       const int size = this->stringStack->size();
       if(size != 0) {
         ui->topLabel->move(ui->topLabel->x(),
