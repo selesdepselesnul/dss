@@ -14,11 +14,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    stackwindow.cpp
+    stackwindow.cpp \
+    queuewindow.cpp
 
 HEADERS  += \
     stack.h \
-    stackwindow.h
+    stackwindow.h \
+    queuewindow.h
 
 FORMS    += \
-    stackwindow.ui
+    stackwindow.ui \
+    queuewindow.ui

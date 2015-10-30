@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     mainWindow->setWindowTitle("DSS");
     mainWindow->setFixedHeight(300);
     mainWindow->setFixedWidth(300);
+    mainWindow->setWindowModality(Qt::WindowModal);
     mainWindow->show();
 
     return a.exec();
