@@ -6,9 +6,8 @@
 // Base Abstract Queue
 template<class T>
 class Queue {
-private:
-    const int INVALID_ACCESS = -1;
 protected:
+    const int INVALID_ACCESS = -9999;
     int length;
     T* container;
     int head;
@@ -44,7 +43,7 @@ public:
     SimpleQueue(int length): Queue<T>(length){}
     int size() {
         return (this->tail == this->head) && (this->head != -1)
-                ? -1 : this->tail - this->head;
+                ? this->INVALID_ACCESS : this->tail - this->head;
     }
 };
 
@@ -67,11 +66,22 @@ public:
 // Circular Queue
 template<class T>
 class CircularQueue : public Queue<T> {
+private:
+    int counter;
 public:
-    CircularQueue(int length) : Queue<T>(length){}
+    CircularQueue(int length) : Queue<T>(length){ this->counter = 0;}
     int size() {
-        return this->tail - this->head;
+        int size = this->tail - this->head;
+        if(size != this->length) {
+            if(this->tail == this->length - 1) {
+                this->tail = -1;
+            } else if(this->head == this->length - 1) {
+                this->head = -1;
+            }
+        }
+        return size;
     }
+
 };
 
 
