@@ -16,8 +16,6 @@ class StackWindow : public QWidget
 
 public:
     explicit StackWindow();
-    ~StackWindow();
-
 private slots:
     void onPushButtonClicked();
     void onPopButtonClicked();

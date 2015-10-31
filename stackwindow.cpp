@@ -24,11 +24,6 @@ StackWindow::StackWindow() :
             this, &StackWindow::onPopButtonClicked);
 }
 
-StackWindow::~StackWindow() {
-    delete ui;
-}
-
-
 void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
     if(item != "") {

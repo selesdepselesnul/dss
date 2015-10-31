@@ -1,5 +1,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
+#include <QDebug>
 
 
 // Base Abstract Queue
@@ -23,11 +24,12 @@ public:
 
     virtual int getSize() = 0;
     void enqueue(T item) {
-        if(this->head == - 1 || !this->isFull()) this->container[++this->tail] = item;
+        if(this->head == - 1 || !this->isFull())
+            this->container[++this->tail] = item;
     }
     T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
-    bool isFull() { return getSize() == this->length; }
-    bool isEmpty() { return getSize() == 0; }
+    bool isFull() { return getSize() == this->length || getSize() == -1; }
+    bool isEmpty() { return getSize() == 0 || getSize() == -1; }
     int getLength() { return this->length; }
     int getTail() { return this->tail;}
     int getHead() { return this->head;}
@@ -39,7 +41,8 @@ class SimpleQueue : public Queue<T> {
 public:
     SimpleQueue(int length): Queue<T>(length){}
     int getSize() {
-        return  this->tail - this->head;
+        return (this->tail == this->head) && (this->head != -1)
+                ? -1 : this->tail - this->head;
     }
 };
 
@@ -65,12 +68,6 @@ class CircularQueue : public Queue<T> {
 public:
     CircularQueue(int length) : Queue<T>(length){}
     int getSize() {
-        const int LAST_INDEX = this->length - 1;
-        if(this->tail > LAST_INDEX) {
-            this->tail = -1;
-        } else if(this->head > LAST_INDEX) {
-            this->head = -1;
-        }
         return this->tail - this->head;
     }
 };

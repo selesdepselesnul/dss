@@ -8,8 +8,7 @@
 #include <QComboBox>
 
 QueueWindow::QueueWindow() :
-    ui(new Ui::QueueWindow)
-{
+    ui(new Ui::QueueWindow) {
     ui->setupUi(this);
     this->lineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
                        << ui->item4 << ui->item5 << ui->item6 << ui->item7
