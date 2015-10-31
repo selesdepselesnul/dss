@@ -30,7 +30,7 @@ public:
     SimpleQueue(int length): Queue<T>(length){}
 
     void enqueue(T item) { if(!this->isFull()) this->container[++this->tail] = item; }
-    T dequeue() { !this->isEmpty() ? this->container[this->head++] : NULL; }
+    T dequeue() { return !this->isEmpty() ? this->container[this->head++] : NULL; }
 };
 
 #endif // QUEUE_H

@@ -16,6 +16,9 @@ QueueWindow::QueueWindow() :
     connect(ui->enqueueButton, &QPushButton::clicked,
             this, &QueueWindow::onEnqueueButtonClicked);
 
+    connect(ui->dequeueButton, &QPushButton::clicked,
+            this, &QueueWindow::onDequeueButtonClicked);
+
     this->queue = new SimpleQueue<QString>(10);
 
     QStringListModel *stringListModel = new QStringListModel();
@@ -49,5 +52,11 @@ void QueueWindow::onEnqueueButtonClicked() {
         this->queue->enqueue(ui->itemToBeEnqueue->text());
     } else {
         qDebug() << "full";
+    }
+}
+
+void QueueWindow::onDequeueButtonClicked() {
+    if(!this->queue->isEmpty()) {
+        qDebug() << this->queue->dequeue();
     }
 }

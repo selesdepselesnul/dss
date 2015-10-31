@@ -20,6 +20,7 @@ public:
 
 private slots:
     void onEnqueueButtonClicked();
+    void onDequeueButtonClicked();
 
 private:
     Ui::QueueWindow *ui;
