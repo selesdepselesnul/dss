@@ -19,9 +19,13 @@ public:
 
     virtual void enqueue(T item) = 0;
     virtual T dequeue() = 0;
-    int getSize() { return (this->tail - this->head) + 1; }
+    int getSize() {
+        return (this->head > this->tail) && this->head == length ?
+                    0 : (this->tail - this->head) + 1;
+    }
     bool isFull() { return getSize() == this->length; }
     bool isEmpty() { return getSize() == 0; }
+    int getLength() { return this->length; }
 };
 
 template<class T>

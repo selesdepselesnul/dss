@@ -57,6 +57,12 @@ void QueueWindow::onEnqueueButtonClicked() {
 
 void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
-        qDebug() << this->queue->dequeue();
+        ui->headLabel->move(
+                    this->lineEditList.at(
+                        this->queue->getLength() - this->queue->getSize())->x(),
+                        ui->headLabel->y());
+        ui->itemToBeEnqueue->setText(this->queue->dequeue());
+    } else {
+        qDebug() << "Empty";
     }
 }
