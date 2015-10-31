@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
+    <width>690</width>
     <height>300</height>
    </rect>
   </property>
@@ -168,7 +168,7 @@
   <widget class="QLabel" name="tailLabel">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>80</x>
      <y>180</y>
      <width>59</width>
      <height>14</height>
@@ -181,9 +181,9 @@
   <widget class="QLineEdit" name="itemToBeEnqueue">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>170</y>
-     <width>91</width>
+     <x>600</x>
+     <y>140</y>
+     <width>71</width>
      <height>22</height>
     </rect>
    </property>

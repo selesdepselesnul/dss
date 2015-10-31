@@ -4,9 +4,8 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
     auto *mainWindow = new QWidget();
 
@@ -33,7 +32,6 @@ int main(int argc, char *argv[])
     });
 
 
-
     mainWindow->setLayout(vBoxLayout);
     mainWindow->setWindowTitle("DSS");
     mainWindow->setFixedHeight(300);
@@ -41,5 +39,5 @@ int main(int argc, char *argv[])
     mainWindow->setWindowModality(Qt::WindowModal);
     mainWindow->show();
 
-    return a.exec();
+    return app.exec();
 }
