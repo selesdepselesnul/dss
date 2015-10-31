@@ -7,7 +7,6 @@ class Queue {
 protected:
     int length;
     T* container;
-    int size;
     int head;
     int tail;
 public:
@@ -15,12 +14,15 @@ public:
         this->length = length;
         this->container = new T[length];
         this->size = 0;
+        this->head = 0;
+        this->tail = -1;
     }
 
     virtual void enqueue(T item) = 0;
     virtual T dequeue() = 0;
-    int getSize() { return this->size; }
-    bool isFull() {}
+    int getSize() { return (this->tail - this->head) + 1; }
+    bool isFull() { return head > tail && (size != 0); }
+    bool isEmpty() { return head > tail && (size == 0); }
 };
 
 template<class T>
@@ -29,11 +31,10 @@ public:
     SimpleQueue(int length): Queue<T>(length){}
 
     void enqueue(T item) {
-        this->container[this->size] = item;
+        if(!isFull()) this->container[++this->tail] = item;
+
     }
-    T dequeue() {
-        return this->container[this->size];
-    }
+    T dequeue() { !isEmpty() ? this->container[this->head++] : NULL; }
 };
 
 #endif // QUEUE_H
