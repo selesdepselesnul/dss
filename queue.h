@@ -65,13 +65,13 @@ class CircularQueue : public Queue<T> {
 public:
     CircularQueue(int length) : Queue<T>(length){}
     int getSize() {
-        if(this->head == this->length) {
-            this->head = 0;
-        } else if(this->tail == this->length) {
-            this->tail = 0;
+        const int LAST_INDEX = this->length - 1;
+        if(this->tail > LAST_INDEX) {
+            this->tail = -1;
+        } else if(this->head > LAST_INDEX) {
+            this->head = -1;
         }
-
-        return (this->tail - this->head) + 1;
+        return this->tail - this->head;
     }
 };
 
