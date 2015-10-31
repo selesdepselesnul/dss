@@ -7,7 +7,6 @@
 template<class T>
 class Queue {
 protected:
-    const int INVALID_ACCESS = -9999;
     int length;
     T* container;
     int head;
@@ -25,12 +24,11 @@ public:
 
     virtual int size() { return this->tail - this->head;}
     virtual void enqueue(T item) {
-        if(this->head == - 1 || !this->isFull())
-            this->container[++this->tail] = item;
+        if(!this->isFull()) this->container[++this->tail] = item;
     }
     virtual T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
-    bool isFull() { return size() == this->length || size() == INVALID_ACCESS; }
-    bool isEmpty() { return size() == 0 || size() == INVALID_ACCESS; }
+    virtual bool isFull() { return size() == this->length; }
+    virtual bool isEmpty() { return size() == 0; }
     int getLength() { return this->length; }
     int getTail() { return this->tail;}
     int getHead() { return this->head;}
@@ -39,12 +37,18 @@ public:
 // SimpleQueue
 template<class T>
 class SimpleQueue : public Queue<T> {
+private:
+    const int INVALID_ACCESS = -9999;
 public:
     SimpleQueue(int length): Queue<T>(length){}
     int size() {
         return (this->tail == this->head) && (this->head != -1)
                 ? this->INVALID_ACCESS : Queue<T>::size();
     }
+
+    bool isFull() { return Queue<T>::isFull() || this->size() == INVALID_ACCESS; }
+
+    bool isEmpty() { return Queue<T>::isEmpty() || this->size() == INVALID_ACCESS; }
 };
 
 // Reset Queue
