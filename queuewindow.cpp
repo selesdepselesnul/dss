@@ -40,6 +40,7 @@ QueueWindow::QueueWindow() :
         } else if(text == "Reset") {
             this->queue = new ResetQueue<QString>(10);
         } else if(text == "Shifting") {
+            this->queue = new ShiftingQueue<QString>(10);
         } else {
             this->queue = new CircularQueue<QString>(10);
         }

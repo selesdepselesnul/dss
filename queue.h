@@ -1,6 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 #include <QDebug>
+#include <algorithm>
 
 
 // Base Abstract Queue
@@ -65,6 +66,20 @@ public:
             return Queue<T>::size();
         }
     }
+};
+
+// Shifting Queue
+template<class T>
+class ShiftingQueue : public Queue<T> {
+public:
+    ShiftingQueue(int length) : Queue<T>(length) {this->head = 0;}
+
+    virtual T dequeue() {
+        std::rotate(this->container, &this->container[1], &this->container[this->size() - 1]);
+        return !this->isEmpty() ? this->container[this->head] : NULL;
+    }
+
+
 };
 
 // Circular Queue
