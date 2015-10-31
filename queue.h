@@ -23,7 +23,7 @@ public:
         this->length = length;
     }
 
-    virtual int size() = 0;
+    virtual int size() { return this->tail - this->head;}
     virtual void enqueue(T item) {
         if(this->head == - 1 || !this->isFull())
             this->container[++this->tail] = item;
@@ -43,7 +43,7 @@ public:
     SimpleQueue(int length): Queue<T>(length){}
     int size() {
         return (this->tail == this->head) && (this->head != -1)
-                ? this->INVALID_ACCESS : this->tail - this->head;
+                ? this->INVALID_ACCESS : Queue<T>::size();
     }
 };
 
@@ -58,7 +58,7 @@ public:
             this->initCounter();
             return 0;
         } else {
-            return this->tail - this->head;
+            return Queue<T>::size();
         }
     }
 };
