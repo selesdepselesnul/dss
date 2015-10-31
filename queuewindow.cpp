@@ -4,6 +4,7 @@
 #include <QStringListModel>
 #include <QStringList>
 #include <iostream>
+#include <QMessageBox>
 
 QueueWindow::QueueWindow() :
     ui(new Ui::QueueWindow)
@@ -51,8 +52,12 @@ void QueueWindow::onEnqueueButtonClicked() {
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
         this->queue->enqueue(ui->itemToBeEnqueue->text());
     } else {
-        qDebug() << "full";
+        showMessage("Queue penuh");
     }
+}
+
+void QueueWindow::showMessage(QString message) {
+    QMessageBox::information(this, "Tidak valid", message);
 }
 
 void QueueWindow::onDequeueButtonClicked() {
@@ -63,6 +68,6 @@ void QueueWindow::onDequeueButtonClicked() {
                         ui->headLabel->y());
         ui->itemToBeEnqueue->setText(this->queue->dequeue());
     } else {
-        qDebug() << "Empty";
+        showMessage("Queue kosong");
     }
 }

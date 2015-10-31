@@ -26,6 +26,7 @@ private:
     Ui::QueueWindow *ui;
     QList<QLineEdit*> lineEditList;
     Queue<QString>* queue;
+    void showMessage(QString message);
 };
 
 #endif // QUEUEWINDOW_H
