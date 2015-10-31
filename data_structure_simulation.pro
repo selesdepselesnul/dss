@@ -20,7 +20,8 @@ SOURCES += main.cpp \
 HEADERS  += \
     stack.h \
     stackwindow.h \
-    queuewindow.h
+    queuewindow.h \
+    queue.h
 
 FORMS    += \
     stackwindow.ui \

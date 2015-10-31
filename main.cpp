@@ -1,4 +1,5 @@
 #include "stackwindow.h"
+#include "queuewindow.h"
 #include <QApplication>
 #include <QVBoxLayout>
 #include <QPushButton>
@@ -24,6 +25,14 @@ int main(int argc, char *argv[])
         auto stackWindow = new StackWindow();
         stackWindow->show();
     });
+
+    QObject::connect(queueWindowPushButton, &QPushButton::clicked,
+                     []() {
+        auto queueWindow = new QueueWindow();
+        queueWindow->show();
+    });
+
+
 
     mainWindow->setLayout(vBoxLayout);
     mainWindow->setWindowTitle("DSS");
