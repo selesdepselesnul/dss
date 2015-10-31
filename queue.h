@@ -10,15 +10,15 @@ protected:
     T* container;
     int head;
     int tail;
-    void init() {
+    void initCounter() {
         this->head = 0;
         this->tail = -1;
     }
 public:
     Queue(int length) {
+        initCounter();
         this->container = new T[length];
         this->length = length;
-        init();
     }
 
     virtual int getSize() = 0;
@@ -27,6 +27,8 @@ public:
     bool isFull() { return getSize() == this->length; }
     bool isEmpty() { return getSize() == 0; }
     int getLength() { return this->length; }
+    int getTail() { return this->tail;}
+    int getHead() { return this->head;}
 };
 
 // SimpleQueue
@@ -35,8 +37,7 @@ class SimpleQueue : public Queue<T> {
 public:
     SimpleQueue(int length): Queue<T>(length){}
     int getSize() {
-        return (this->head > this->tail) && this->head == this->length ?
-                    0 : (this->tail - this->head) + 1;
+        return  (this->tail - this->head) + 1;
     }
 };
 
@@ -47,13 +48,29 @@ public:
     ResetQueue(int length): Queue<T>(length){}
 public:
     int getSize() {
-        if((this->head > this->tail) && this->head == this->length) {
-            this->init();
+        if(this->head == this->length) {
+            this->initCounter();
             return 0;
         } else {
             return (this->tail - this->head) + 1;
         }
 
+    }
+};
+
+// Circular Queue
+template<class T>
+class CircularQueue : public Queue<T> {
+public:
+    CircularQueue(int length) : Queue<T>(length){}
+    int getSize() {
+        if(this->head == this->length) {
+            this->head = 0;
+        } else if(this->tail == this->length) {
+            this->tail = 0;
+        }
+
+        return (this->tail - this->head) + 1;
     }
 };
 

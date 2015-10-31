@@ -23,9 +23,6 @@ QueueWindow::QueueWindow() :
 
 
     this->queue = new SimpleQueue<QString>(10);
-    currentMode = "Simple";
-    this->headCounter = 0;
-    this->tailCounter = -1;
 
     QStringListModel *stringListModel = new QStringListModel();
     QStringList stringList;
@@ -36,23 +33,21 @@ QueueWindow::QueueWindow() :
 
     connect(ui->modeComboBox,static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
             [&](const QString &text){
-        clearState();
         if(text == "Simple") {
             this->queue = new SimpleQueue<QString>(10);
         } else if(text == "Reset") {
             this->queue = new ResetQueue<QString>(10);
-            currentMode = "Reset";
+        } else if(text == "Shifting") {
+        } else {
+            this->queue = new CircularQueue<QString>(10);
         }
     });
-
-    this->headInitPos = ui->headLabel->pos();
-    this->tailInitPos = ui->tailLabel->pos();
 }
 
 void QueueWindow::onEnqueueButtonClicked() {
     qDebug() << "curent size is = " << this->queue->getSize();
     if(!this->queue->isFull()) {
-        auto currentItem = this->lineEditList.at(++this->tailCounter);
+        auto currentItem = this->lineEditList.at(this->queue->getTail()+1);
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
         this->queue->enqueue(ui->itemToBeEnqueue->text());
@@ -69,21 +64,12 @@ void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
         ui->headLabel->move(
                     this->lineEditList.at(
-                        this->headCounter++)->x(),
+                        this->queue->getHead())->x(),
                         ui->headLabel->y());
         ui->itemToBeEnqueue->setText(this->queue->dequeue());
+        qDebug() << "Current size is = " << this->queue->getSize();
     } else {
-        if(currentMode == "Reset") clearState();
         showMessage("Queue kosong");
     }
 
-}
-
-
-
-void QueueWindow::clearState() {
-    ui->headLabel->move(this->headInitPos);
-    ui->tailLabel->move(this->tailInitPos);
-    this->headCounter = 0;
-    this->tailCounter = -1;
 }
