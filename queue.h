@@ -6,6 +6,8 @@
 // Base Abstract Queue
 template<class T>
 class Queue {
+private:
+    const int INVALID_ACCESS = -1;
 protected:
     int length;
     T* container;
@@ -22,14 +24,14 @@ public:
         this->length = length;
     }
 
-    virtual int getSize() = 0;
+    virtual int size() = 0;
     void enqueue(T item) {
         if(this->head == - 1 || !this->isFull())
             this->container[++this->tail] = item;
     }
     T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
-    bool isFull() { return getSize() == this->length || getSize() == -1; }
-    bool isEmpty() { return getSize() == 0 || getSize() == -1; }
+    bool isFull() { return size() == this->length || size() == INVALID_ACCESS; }
+    bool isEmpty() { return size() == 0 || size() == INVALID_ACCESS; }
     int getLength() { return this->length; }
     int getTail() { return this->tail;}
     int getHead() { return this->head;}
@@ -40,7 +42,7 @@ template<class T>
 class SimpleQueue : public Queue<T> {
 public:
     SimpleQueue(int length): Queue<T>(length){}
-    int getSize() {
+    int size() {
         return (this->tail == this->head) && (this->head != -1)
                 ? -1 : this->tail - this->head;
     }
@@ -52,7 +54,7 @@ class ResetQueue : public Queue<T> {
 public:
     ResetQueue(int length): Queue<T>(length){}
 public:
-    int getSize() {
+    int size() {
         if(this->tail  == this->head) {
             this->initCounter();
             return 0;
@@ -67,7 +69,7 @@ template<class T>
 class CircularQueue : public Queue<T> {
 public:
     CircularQueue(int length) : Queue<T>(length){}
-    int getSize() {
+    int size() {
         return this->tail - this->head;
     }
 };

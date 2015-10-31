@@ -57,7 +57,7 @@ void QueueWindow::onEnqueueButtonClicked() {
     } else {
         showMessage("Queue penuh");
     }
-    qDebug() << "curent size is = " << this->queue->getSize();
+    qDebug() << "curent size is = " << this->queue->size();
 }
 
 void QueueWindow::showMessage(QString message) {
@@ -71,7 +71,7 @@ void QueueWindow::onDequeueButtonClicked() {
                     this->lineEditList.at(
                         this->queue->getHead())->x(),
                         ui->headLabel->y());
-        qDebug() << "Current size is = " << this->queue->getSize();
+        qDebug() << "Current size is = " << this->queue->size();
     } else {
         showMessage("Queue kosong");
     }
