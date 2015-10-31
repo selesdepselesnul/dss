@@ -21,6 +21,9 @@ QueueWindow::QueueWindow() :
     connect(ui->dequeueButton, &QPushButton::clicked,
             this, &QueueWindow::onDequeueButtonClicked);
 
+    this->initHeadPos = ui->headLabel->pos();
+    this->initTailPos = ui->tailLabel->pos();
+
 
     this->queue = new SimpleQueue<QString>(10);
 
@@ -41,19 +44,21 @@ QueueWindow::QueueWindow() :
         } else {
             this->queue = new CircularQueue<QString>(10);
         }
+        ui->headLabel->move(this->initHeadPos);
+        ui->tailLabel->move(this->initTailPos);
     });
 }
 
 void QueueWindow::onEnqueueButtonClicked() {
-    qDebug() << "curent size is = " << this->queue->getSize();
     if(!this->queue->isFull()) {
-        auto currentItem = this->lineEditList.at(this->queue->getTail()+1);
+        this->queue->enqueue(ui->itemToBeEnqueue->text());
+        auto currentItem = this->lineEditList.at(this->queue->getTail());
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
-        this->queue->enqueue(ui->itemToBeEnqueue->text());
     } else {
         showMessage("Queue penuh");
     }
+    qDebug() << "curent size is = " << this->queue->getSize();
 }
 
 void QueueWindow::showMessage(QString message) {
@@ -62,11 +67,11 @@ void QueueWindow::showMessage(QString message) {
 
 void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
+        ui->itemToBeEnqueue->setText(this->queue->dequeue());
         ui->headLabel->move(
                     this->lineEditList.at(
                         this->queue->getHead())->x(),
                         ui->headLabel->y());
-        ui->itemToBeEnqueue->setText(this->queue->dequeue());
         qDebug() << "Current size is = " << this->queue->getSize();
     } else {
         showMessage("Queue kosong");

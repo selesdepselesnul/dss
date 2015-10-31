@@ -26,6 +26,8 @@ private:
     Ui::QueueWindow *ui;
     QList<QLineEdit*> lineEditList;
     Queue<QString>* queue;
+    QPoint initHeadPos;
+    QPoint initTailPos;
     void showMessage(QString message);
 };
 

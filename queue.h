@@ -11,7 +11,7 @@ protected:
     int head;
     int tail;
     void initCounter() {
-        this->head = 0;
+        this->head = -1;
         this->tail = -1;
     }
 public:
@@ -22,8 +22,10 @@ public:
     }
 
     virtual int getSize() = 0;
-    void enqueue(T item) { if(!this->isFull()) this->container[++this->tail] = item; }
-    T dequeue() { return !this->isEmpty() ? this->container[this->head++] : NULL; }
+    void enqueue(T item) {
+        if(this->head == - 1 || !this->isFull()) this->container[++this->tail] = item;
+    }
+    T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
     bool isFull() { return getSize() == this->length; }
     bool isEmpty() { return getSize() == 0; }
     int getLength() { return this->length; }
@@ -37,7 +39,7 @@ class SimpleQueue : public Queue<T> {
 public:
     SimpleQueue(int length): Queue<T>(length){}
     int getSize() {
-        return  (this->tail - this->head) + 1;
+        return  this->tail - this->head;
     }
 };
 
@@ -48,13 +50,12 @@ public:
     ResetQueue(int length): Queue<T>(length){}
 public:
     int getSize() {
-        if(this->head == this->length) {
+        if(this->tail  == this->head) {
             this->initCounter();
             return 0;
         } else {
-            return (this->tail - this->head) + 1;
+            return this->tail - this->head;
         }
-
     }
 };
 
