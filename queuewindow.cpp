@@ -5,6 +5,7 @@
 #include <QStringList>
 #include <iostream>
 #include <QMessageBox>
+#include <QComboBox>
 
 QueueWindow::QueueWindow() :
     ui(new Ui::QueueWindow)
@@ -20,7 +21,11 @@ QueueWindow::QueueWindow() :
     connect(ui->dequeueButton, &QPushButton::clicked,
             this, &QueueWindow::onDequeueButtonClicked);
 
+
     this->queue = new SimpleQueue<QString>(10);
+    currentMode = "Simple";
+    this->headCounter = 0;
+    this->tailCounter = -1;
 
     QStringListModel *stringListModel = new QStringListModel();
     QStringList stringList;
@@ -28,26 +33,26 @@ QueueWindow::QueueWindow() :
     stringListModel->setStringList(stringList);
 
     ui->modeComboBox->setModel(stringListModel);
+
+    connect(ui->modeComboBox,static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
+            [&](const QString &text){
+        clearState();
+        if(text == "Simple") {
+            this->queue = new SimpleQueue<QString>(10);
+        } else if(text == "Reset") {
+            this->queue = new ResetQueue<QString>(10);
+            currentMode = "Reset";
+        }
+    });
+
+    this->headInitPos = ui->headLabel->pos();
+    this->tailInitPos = ui->tailLabel->pos();
 }
 
 void QueueWindow::onEnqueueButtonClicked() {
-    switch (ui->modeComboBox->currentIndex()) {
-    case 0:
-        qDebug() << "Simple";
-        break;
-    case 1:
-        qDebug() << "Reset";
-        break;
-    case 2:
-        qDebug() << "Shifting";
-        break;
-    default:
-        qDebug() << "Circular";
-        break;
-    }
     qDebug() << "curent size is = " << this->queue->getSize();
     if(!this->queue->isFull()) {
-        auto currentItem = this->lineEditList.at(this->queue->getSize());
+        auto currentItem = this->lineEditList.at(++this->tailCounter);
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
         this->queue->enqueue(ui->itemToBeEnqueue->text());
@@ -64,10 +69,21 @@ void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
         ui->headLabel->move(
                     this->lineEditList.at(
-                        this->queue->getLength() - this->queue->getSize())->x(),
+                        this->headCounter++)->x(),
                         ui->headLabel->y());
         ui->itemToBeEnqueue->setText(this->queue->dequeue());
     } else {
+        if(currentMode == "Reset") clearState();
         showMessage("Queue kosong");
     }
+
+}
+
+
+
+void QueueWindow::clearState() {
+    ui->headLabel->move(this->headInitPos);
+    ui->tailLabel->move(this->tailInitPos);
+    this->headCounter = 0;
+    this->tailCounter = -1;
 }

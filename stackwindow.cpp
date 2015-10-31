@@ -22,7 +22,6 @@ StackWindow::StackWindow() :
             this, &StackWindow::onPushButtonClicked);
     connect(ui->popButton, &QPushButton::clicked,
             this, &StackWindow::onPopButtonClicked);
-
 }
 
 StackWindow::~StackWindow() {
