@@ -43,8 +43,9 @@ void QueueWindow::onEnqueueButtonClicked() {
     }
     qDebug() << "curent size is = " << this->queue->getSize();
     if(!this->queue->isFull()) {
-        this->lineEditList.at(this->queue->getSize())
-                           ->setText(ui->itemToBeEnqueue->text());
+        auto currentItem = this->lineEditList.at(this->queue->getSize());
+        currentItem->setText(ui->itemToBeEnqueue->text());
+        ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
         this->queue->enqueue(ui->itemToBeEnqueue->text());
     } else {
         qDebug() << "full";
