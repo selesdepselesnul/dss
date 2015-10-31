@@ -24,11 +24,11 @@ public:
     }
 
     virtual int size() = 0;
-    void enqueue(T item) {
+    virtual void enqueue(T item) {
         if(this->head == - 1 || !this->isFull())
             this->container[++this->tail] = item;
     }
-    T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
+    virtual T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
     bool isFull() { return size() == this->length || size() == INVALID_ACCESS; }
     bool isEmpty() { return size() == 0 || size() == INVALID_ACCESS; }
     int getLength() { return this->length; }
@@ -70,19 +70,40 @@ private:
     int counter;
 public:
     CircularQueue(int length) : Queue<T>(length){ this->counter = 0;}
-    int size() {
-        int size = this->tail - this->head;
-        if(size != this->length) {
+
+    void enqueue(T item) {
+        checkPos();
+        if(this->counter != this->length) {
+            ++this->counter;
+            this->container[++this->tail] = item;
+        }
+    }
+
+    T dequeue() {
+        checkPos();
+        if(this->counter != 0) {
+            --this->counter;
+            return this->container[++this->head];
+        } else {
+            return NULL;
+        }
+    }
+
+    void checkPos() {
+        if(this->counter != this->length) {
+            qDebug() << "inside";
             if(this->tail == this->length - 1) {
                 this->tail = -1;
             } else if(this->head == this->length - 1) {
                 this->head = -1;
             }
         }
-        return size;
+    }
+
+    int size() {
+        return this->counter;
     }
 
 };
-
 
 #endif // QUEUE_H
