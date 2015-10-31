@@ -41,6 +41,12 @@ void QueueWindow::onEnqueueButtonClicked() {
         qDebug() << "Circular";
         break;
     }
+    qDebug() << "curent size is = " << this->queue->getSize();
     if(!this->queue->isFull()) {
+        this->lineEditList.at(this->queue->getSize())
+                           ->setText(ui->itemToBeEnqueue->text());
+        this->queue->enqueue(ui->itemToBeEnqueue->text());
+    } else {
+        qDebug() << "full";
     }
 }
