@@ -82,19 +82,19 @@ public:
     }
 
     T dequeue() {
-        --this->tail;
         T item = !this->isEmpty() ? this->container[this->head] : NULL;
         for (int i = 0; i < this->size() - 1; i++) {
             this->container[i] = this->container[i + 1];
         }
         qDebug() << "item dequeue : " << item;
         qDebug() << "Current tail is = " << this->tail;
+        --this->tail;
         return item;
     }
 
 
     int size() {
-        if(this->tail == this->head) {
+        if(this->tail == -1) {
             return 0;
         } else {
             return this->tail + 1;

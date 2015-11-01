@@ -276,8 +276,8 @@ background-color: black</string>
   <widget class="QLCDNumber" name="queueSizeLcdNumber">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>50</y>
+     <x>210</x>
+     <y>80</y>
      <width>141</width>
      <height>41</height>
     </rect>
@@ -286,27 +286,11 @@ background-color: black</string>
     <string notr="true">background-color: green;</string>
    </property>
   </widget>
-  <widget class="QProgressBar" name="queueProgressBar">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>110</y>
-     <width>141</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="value">
-    <number>24</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>20</y>
+     <x>180</x>
+     <y>50</y>
      <width>221</width>
      <height>20</height>
     </rect>

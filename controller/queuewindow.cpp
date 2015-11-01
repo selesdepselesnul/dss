@@ -17,9 +17,6 @@ QueueWindow::QueueWindow() :
                        << ui->item8 << ui->item9;
 
 
-    ui->queueProgressBar->setValue(0);
-    ui->queueProgressBar->setMaximum(10);
-
     connect(ui->enqueueButton, &QPushButton::clicked,
             this, &QueueWindow::onEnqueueButtonClicked);
 
@@ -73,7 +70,6 @@ void QueueWindow::onEnqueueButtonClicked() {
             ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
 
             ui->queueSizeLcdNumber->display(this->queue->size());
-            ui->queueProgressBar->setValue(this->queue->size());
         } else {
             showMessage("Masukan hanya integer !");
         }
@@ -89,10 +85,11 @@ void QueueWindow::showMessage(QString message) {
 }
 
 void QueueWindow::onDequeueButtonClicked() {
-    if(!this->queue->isEmpty()) {
+    auto item = this->queue->dequeue();
+    if(item != NULL) {
         qDebug() << "Current size is = " << this->queue->size();
 
-        ui->dequeuedItemLcdNumber->display(this->queue->dequeue());
+        ui->dequeuedItemLcdNumber->display(item);
         auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
@@ -103,8 +100,11 @@ void QueueWindow::onDequeueButtonClicked() {
                          << " to " << nextLineEdit->text();
                 lineEdit->setText(nextLineEdit->text());
             }
-            auto item = this->lineEditList.at(this->queue->getTail());
+            auto item = this->lineEditList.at(this->queue->getTail() + 1);
             item->setStyleSheet("background-color: red");
+//            this->lineEditList.at(
+//                        this->queue->getTail())
+//                    ->setStyleSheet("background-color: red");
             ui->tailLabel->move(item->x(), ui->tailLabel->y());
         } else {
             queuedLineEdit->setStyleSheet("background-color: red");
@@ -114,9 +114,9 @@ void QueueWindow::onDequeueButtonClicked() {
                         this->queue->getHead())->x(),
                     ui->headLabel->y());
 
+        ui->queueSizeLcdNumber->display(this->queue->size());
+
     } else {
         showMessage("Queue kosong");
     }
-    ui->queueSizeLcdNumber->display(this->queue->size());
-    ui->queueProgressBar->setValue(this->queue->size());
 }
