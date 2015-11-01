@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
-    <height>300</height>
+    <width>695</width>
+    <height>373</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>140</y>
+     <y>220</y>
      <width>81</width>
      <height>22</height>
     </rect>
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>140</y>
+     <y>220</y>
      <width>91</width>
      <height>22</height>
     </rect>
@@ -43,7 +43,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -53,7 +53,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -63,7 +63,7 @@
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -73,7 +73,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -83,7 +83,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -93,7 +93,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -103,7 +103,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -113,7 +113,7 @@
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -123,7 +123,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -133,7 +133,7 @@
    <property name="geometry">
     <rect>
      <x>460</x>
-     <y>140</y>
+     <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
@@ -143,7 +143,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>220</y>
+     <y>300</y>
      <width>111</width>
      <height>22</height>
     </rect>
@@ -156,7 +156,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>110</y>
+     <y>190</y>
      <width>59</width>
      <height>14</height>
     </rect>
@@ -169,7 +169,7 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>180</y>
+     <y>260</y>
      <width>59</width>
      <height>14</height>
     </rect>
@@ -182,20 +182,50 @@
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>140</y>
+     <y>220</y>
      <width>71</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="queueSize">
+  <widget class="QLCDNumber" name="queueSizeLcdNumber">
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>30</y>
+     <y>50</y>
      <width>141</width>
      <height>41</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="queueProgressBar">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>110</y>
+     <width>141</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>24</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>20</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;Liberation Serif&quot;;
+font: 16pt &quot;Nimbus Roman No9 L&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Jumlah Di Dalam Antrian</string>
    </property>
   </widget>
  </widget>

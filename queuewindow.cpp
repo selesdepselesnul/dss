@@ -16,6 +16,9 @@ QueueWindow::QueueWindow() :
                        << ui->item8 << ui->item9;
 
 
+    ui->queueProgressBar->setValue(0);
+    ui->queueProgressBar->setMaximum(10);
+
     connect(ui->enqueueButton, &QPushButton::clicked,
             this, &QueueWindow::onEnqueueButtonClicked);
 
@@ -60,7 +63,8 @@ void QueueWindow::onEnqueueButtonClicked() {
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
 
-    ui->queueSize->display(this->queue->size());
+    ui->queueSizeLcdNumber->display(this->queue->size());
+    ui->queueProgressBar->setValue(this->queue->size());
     } else {
         showMessage("Queue penuh");
     }
@@ -96,6 +100,6 @@ void QueueWindow::onDequeueButtonClicked() {
     } else {
         showMessage("Queue kosong");
     }
-    ui->queueSize->display(this->queue->size());
-
+    ui->queueSizeLcdNumber->display(this->queue->size());
+    ui->queueProgressBar->setValue(this->queue->size());
 }
