@@ -61,14 +61,17 @@ class ResetQueue : public Queue<T> {
 public:
     ResetQueue(int length): Queue<T>(length){}
 public:
-    int size() {
-        if(this->tail  == this->head) {
-            this->initCounter();
-            return 0;
-        } else {
-            return Queue<T>::size();
-        }
+    void enqueue(T item) {
+        if(!this->isFull()) this->container[++this->tail] = item;
+        qDebug() << "Curent tail = " << this->tail;
     }
+    T dequeue() {
+        if(this->head == this->tail) {
+            this->initCounter();
+        }
+        return this->size() == 0 ? 0 : this->container[++this->head];
+    }
+
 };
 
 // Shifting Queue

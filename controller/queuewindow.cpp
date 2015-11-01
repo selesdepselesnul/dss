@@ -88,6 +88,7 @@ void QueueWindow::onDequeueButtonClicked() {
     auto item = this->queue->dequeue();
     if(item != NULL) {
         qDebug() << "Current size is = " << this->queue->size();
+        qDebug() << "Head is = " << this->queue->getHead();
 
         ui->dequeuedItemLcdNumber->display(item);
         auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
