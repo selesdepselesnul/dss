@@ -25,6 +25,7 @@ public:
     virtual int size() { return this->tail - this->head;}
     virtual void enqueue(T item) {
         if(!this->isFull()) this->container[++this->tail] = item;
+        qDebug() << "Curent tail = " << this->tail;
     }
     virtual T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
     virtual bool isFull() { return size() == this->length; }
@@ -70,22 +71,31 @@ public:
 // Shifting Queue
 template<class T>
 class ShiftingQueue : public Queue<T> {
+private:
+    bool isFirst;
 public:
-    ShiftingQueue(int length) : Queue<T>(length) {this->head = 0;}
+    ShiftingQueue(int length) : Queue<T>(length) {
+        this->head = 0;
+    }
 
     T dequeue() {
+        --this->tail;
         T item = !this->isEmpty() ? this->container[this->head] : NULL;
-        for (int i = 0; i < this->size(); ++i) {
+        for (int i = 0; i < this->size() - 1; i++) {
             this->container[i] = this->container[i + 1];
-
         }
         qDebug() << "item dequeue : " << item;
-        this->tail--;
+        qDebug() << "Current tail is = " << this->tail;
         return item;
     }
 
+
     int size() {
-        return this->tail + 1;
+        if(this->tail == this->head) {
+            return 0;
+        } else {
+            return this->tail + 1;
+        }
     }
 
 };
