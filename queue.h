@@ -3,7 +3,6 @@
 #include <QDebug>
 #include <algorithm>
 
-
 // Base Abstract Queue
 template<class T>
 class Queue {
@@ -75,10 +74,13 @@ public:
     ShiftingQueue(int length) : Queue<T>(length) {this->head = 0;}
 
     virtual T dequeue() {
-        std::rotate(this->container, &this->container[1], &this->container[this->size() - 1]);
+        std::rotate(this->container, &this->container[1], &this->container[this->size()]);
         return !this->isEmpty() ? this->container[this->head] : NULL;
     }
 
+    int size() {
+        return this->tail + 1;
+    }
 
 };
 
