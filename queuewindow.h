@@ -25,7 +25,7 @@ private slots:
 private:
     Ui::QueueWindow *ui;
     QList<QLineEdit*> lineEditList;
-    Queue<QLineEdit*>* queue;
+    Queue<QString>* queue;
     QPoint initHeadPos;
     QPoint initTailPos;
     bool isShiftingMode;

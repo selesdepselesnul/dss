@@ -27,7 +27,7 @@ QueueWindow::QueueWindow() :
 
     this->isShiftingMode = false;
 
-    this->queue = new SimpleQueue<QLineEdit*>(10);
+    this->queue = new SimpleQueue<QString>(10);
 
     QStringListModel *stringListModel = new QStringListModel();
     QStringList stringList;
@@ -39,14 +39,14 @@ QueueWindow::QueueWindow() :
     connect(ui->modeComboBox,static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
             [&](const QString &text){
         if(text == "Simple") {
-            this->queue = new SimpleQueue<QLineEdit*>(10);
+            this->queue = new SimpleQueue<QString>(10);
         } else if(text == "Reset") {
-            this->queue = new ResetQueue<QLineEdit*>(10);
+            this->queue = new ResetQueue<QString>(10);
         } else if(text == "Shifting") {
-            this->queue = new ShiftingQueue<QLineEdit*>(10);
+            this->queue = new ShiftingQueue<QString>(10);
             this->isShiftingMode = true;
         } else {
-            this->queue = new CircularQueue<QLineEdit*>(10);
+            this->queue = new CircularQueue<QString>(10);
         }
         ui->headLabel->move(this->initHeadPos);
         ui->tailLabel->move(this->initTailPos);
@@ -55,8 +55,8 @@ QueueWindow::QueueWindow() :
 
 void QueueWindow::onEnqueueButtonClicked() {
     if(!this->queue->isFull()) {
-        auto currentItem = this->lineEditList.at(this->queue->getTail() + 1);
-        this->queue->enqueue(currentItem);
+        this->queue->enqueue(ui->itemToBeEnqueue->text());
+        auto currentItem = this->lineEditList.at(this->queue->getTail());
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
     } else {
@@ -71,8 +71,9 @@ void QueueWindow::showMessage(QString message) {
 
 void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
-        ui->itemToBeEnqueue->setText(this->queue->dequeue()->text());
         qDebug() << "Current size is = " << this->queue->size();
+
+        ui->itemToBeEnqueue->setText(this->queue->dequeue());
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
             for (int i = 0; i < this->queue->size(); i++) {

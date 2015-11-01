@@ -73,10 +73,15 @@ class ShiftingQueue : public Queue<T> {
 public:
     ShiftingQueue(int length) : Queue<T>(length) {this->head = 0;}
 
-    virtual T dequeue() {
-        std::rotate(this->container, &this->container[1], &this->container[this->size()]);
+    T dequeue() {
+        T item = !this->isEmpty() ? this->container[this->head] : NULL;
+        for (int i = 0; i < this->size(); ++i) {
+            this->container[i] = this->container[i + 1];
+
+        }
+        qDebug() << "item dequeue : " << item;
         this->tail--;
-        return !this->isEmpty() ? this->container[this->head] : NULL;
+        return item;
     }
 
     int size() {
