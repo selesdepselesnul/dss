@@ -237,6 +237,52 @@
     <string>TOP</string>
    </property>
   </widget>
+  <widget class="QLCDNumber" name="popedItemLcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>240</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Item Yang Di Pop</string>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="stackSizeLcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Jumlah Item di Stack</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

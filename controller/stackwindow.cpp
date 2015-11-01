@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include "util/stack.h"
 #include <QList>
+#include <QRegExp>
 
 StackWindow::StackWindow() :
     ui(new Ui::StackWindow) {
@@ -26,7 +27,8 @@ StackWindow::StackWindow() :
 
 void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
-    if(item != "") {
+    auto regXp = new QRegExp("\\d+");
+    if(regXp->exactMatch(item)) {
         const int size = this->stringStack->size();
         auto item = this->qLineEditList.at(size);
         item->setText(ui->itemToPushedLineEdit->text());
@@ -39,8 +41,9 @@ void StackWindow::pushToLineEdit() {
                                ui->popButton->y());
         }
         this->stringStack->push(ui->itemToPushedLineEdit->text());
+        ui->stackSizeLcdNumber->display(this->stringStack->size());
     } else {
-        showDialog("item tidak boleh kosong !");
+        showDialog("item harus integer !");
     }
 }
 
@@ -64,8 +67,9 @@ void StackWindow::onPopButtonClicked() {
         item->setStyleSheet("background-color: red");
         ui->topLabel->move(ui->topLabel->x(),
                     item->y());
-        ui->itemToPushedLineEdit->setText(this->stringStack->peek());
+        ui->popedItemLcdNumber->display(this->stringStack->peek());
         this->stringStack->pop();
+        ui->stackSizeLcdNumber->display(this->stringStack->size());
       } else {
         showDialog("Stack kosong!");
       }
