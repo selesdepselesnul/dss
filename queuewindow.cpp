@@ -72,10 +72,6 @@ void QueueWindow::showMessage(QString message) {
 void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
         ui->itemToBeEnqueue->setText(this->queue->dequeue()->text());
-        ui->headLabel->move(
-                    this->lineEditList.at(
-                        this->queue->getHead())->x(),
-                        ui->headLabel->y());
         qDebug() << "Current size is = " << this->queue->size();
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
@@ -85,9 +81,15 @@ void QueueWindow::onDequeueButtonClicked() {
                 qDebug() << "Change " << lineEdit->text()
                          << " to " << nextLineEdit->text();
                 lineEdit->setText(nextLineEdit->text());
-
             }
+            ui->tailLabel->move(this->lineEditList.at(this->queue->getTail())->x(),
+                                ui->tailLabel->y());
         }
+        ui->headLabel->move(
+                    this->lineEditList.at(
+                        this->queue->getHead())->x(),
+                    ui->headLabel->y());
+
     } else {
         showMessage("Queue kosong");
     }

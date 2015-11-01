@@ -75,6 +75,7 @@ public:
 
     virtual T dequeue() {
         std::rotate(this->container, &this->container[1], &this->container[this->size()]);
+        this->tail--;
         return !this->isEmpty() ? this->container[this->head] : NULL;
     }
 
