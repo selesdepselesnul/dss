@@ -52,6 +52,10 @@ QueueWindow::QueueWindow() :
         } else {
             this->queue = new CircularQueue<QString>(10);
         }
+        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
+                      [](QLineEdit *x) {
+            x->setStyleSheet("background-color: black");
+        });
         ui->headLabel->move(this->initHeadPos);
         ui->tailLabel->move(this->initTailPos);
     });
