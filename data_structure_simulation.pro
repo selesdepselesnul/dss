@@ -26,3 +26,6 @@ HEADERS  += \
 FORMS    += \
     stackwindow.ui \
     queuewindow.ui
+
+RESOURCES += \
+    icon.qrc
