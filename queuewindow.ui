@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="dequeueButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>220</y>
      <width>81</width>
      <height>22</height>
@@ -45,11 +45,14 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>100</x>
      <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QLineEdit" name="item1">
@@ -58,11 +61,14 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>140</x>
      <y>220</y>
      <width>41</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QLineEdit" name="item2">
@@ -77,6 +83,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
   </widget>
   <widget class="QLineEdit" name="item3">
    <property name="enabled">
@@ -89,6 +98,9 @@
      <width>41</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QLineEdit" name="item4">
@@ -103,6 +115,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
   </widget>
   <widget class="QLineEdit" name="item5">
    <property name="enabled">
@@ -115,6 +130,9 @@
      <width>41</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QLineEdit" name="item6">
@@ -129,6 +147,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
   </widget>
   <widget class="QLineEdit" name="item7">
    <property name="enabled">
@@ -141,6 +162,9 @@
      <width>41</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
   </widget>
   <widget class="QLineEdit" name="item8">
@@ -155,6 +179,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
   </widget>
   <widget class="QLineEdit" name="item9">
    <property name="enabled">
@@ -168,11 +195,14 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
   </widget>
   <widget class="QComboBox" name="modeComboBox">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>300</y>
      <width>111</width>
      <height>22</height>

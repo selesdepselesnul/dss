@@ -60,6 +60,7 @@ void QueueWindow::onEnqueueButtonClicked() {
     if(!this->queue->isFull()) {
         this->queue->enqueue(ui->itemToBeEnqueue->text());
         auto currentItem = this->lineEditList.at(this->queue->getTail());
+        currentItem->setStyleSheet("background-color: green");
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
 
@@ -81,6 +82,8 @@ void QueueWindow::onDequeueButtonClicked() {
         qDebug() << "Current size is = " << this->queue->size();
 
         ui->dequeuedItemLcdNumber->display(this->queue->dequeue());
+        auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
+        queuedLineEdit->setStyleSheet("background-color: red");
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
             for (int i = 0; i < this->queue->size(); i++) {
