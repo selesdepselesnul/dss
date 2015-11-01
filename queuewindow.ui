@@ -40,6 +40,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item0">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -50,6 +53,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item1">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -60,6 +66,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -70,6 +79,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -80,6 +92,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item4">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -90,6 +105,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item5">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -100,6 +118,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item6">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -110,6 +131,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item7">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -120,6 +144,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item8">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -130,6 +157,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>460</x>
