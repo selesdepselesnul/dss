@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QComboBox>
 #include <algorithm>
+#include <QRegExp>
 
 QueueWindow::QueueWindow() :
     ui(new Ui::QueueWindow) {
@@ -58,14 +59,20 @@ QueueWindow::QueueWindow() :
 
 void QueueWindow::onEnqueueButtonClicked() {
     if(!this->queue->isFull()) {
-        this->queue->enqueue(ui->itemToBeEnqueue->text());
-        auto currentItem = this->lineEditList.at(this->queue->getTail());
-        currentItem->setStyleSheet("background-color: green");
-        currentItem->setText(ui->itemToBeEnqueue->text());
-        ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
+        auto item = ui->itemToBeEnqueue->text();
+        auto regXp = new QRegExp("\\d+");
+        if (regXp->exactMatch(item)) {
+            this->queue->enqueue(item);
+            auto currentItem = this->lineEditList.at(this->queue->getTail());
+            currentItem->setStyleSheet("background-color: green");
+            currentItem->setText(ui->itemToBeEnqueue->text());
+            ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
 
-    ui->queueSizeLcdNumber->display(this->queue->size());
-    ui->queueProgressBar->setValue(this->queue->size());
+            ui->queueSizeLcdNumber->display(this->queue->size());
+            ui->queueProgressBar->setValue(this->queue->size());
+        } else {
+            showMessage("Masukan hanya integer !");
+        }
     } else {
         showMessage("Queue penuh");
     }

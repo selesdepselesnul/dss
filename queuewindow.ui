@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item1">
@@ -68,7 +68,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item2">
@@ -84,7 +84,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item3">
@@ -100,7 +100,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item4">
@@ -116,7 +116,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item5">
@@ -132,7 +132,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item6">
@@ -148,7 +148,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item7">
@@ -164,7 +164,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item8">
@@ -180,7 +180,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item9">
@@ -196,7 +196,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color : rgb(0, 0, 0)</string>
    </property>
   </widget>
   <widget class="QComboBox" name="modeComboBox">
