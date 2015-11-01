@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QString>
 #include <QPoint>
-#include "queue.h"
+#include "util/queue.h"
 
 namespace Ui {
 class QueueWindow;

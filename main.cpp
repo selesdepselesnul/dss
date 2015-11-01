@@ -1,5 +1,5 @@
-#include "stackwindow.h"
-#include "queuewindow.h"
+#include "controller/stackwindow.h"
+#include "controller/queuewindow.h"
 #include <QApplication>
 #include <QVBoxLayout>
 #include <QPushButton>

@@ -14,18 +14,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    stackwindow.cpp \
-    queuewindow.cpp
+    controller/stackwindow.cpp \
+    controller/queuewindow.cpp \
 
 HEADERS  += \
-    stack.h \
-    stackwindow.h \
-    queuewindow.h \
-    queue.h
+    util/stack.h \
+    util/queue.h \
+    controller/stackwindow.h \
+    controller/queuewindow.h
 
 FORMS    += \
-    stackwindow.ui \
-    queuewindow.ui
+    ui/stackwindow.ui \
+    ui/queuewindow.ui
 
 RESOURCES += \
-    icon.qrc
+    dss_icon.qrc

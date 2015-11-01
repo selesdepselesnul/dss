@@ -222,7 +222,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/down.png);</string>
+    <string notr="true">image: url(:/resource/down.png);</string>
    </property>
    <property name="text">
     <string>head</string>
@@ -238,7 +238,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/up.png);</string>
+    <string notr="true">image: url(:/resource/up.png);</string>
    </property>
    <property name="text">
     <string>tail</string>

@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QString>
-#include "stack.h"
+#include "util/stack.h"
 
 namespace Ui {
 class StackWindow;

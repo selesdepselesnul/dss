@@ -231,7 +231,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/right.png);</string>
+    <string notr="true">image: url(:/resource/right.png);</string>
    </property>
    <property name="text">
     <string>TOP</string>

@@ -5,7 +5,7 @@
 #include <string>
 #include <QString>
 #include <QPushButton>
-#include "stack.h"
+#include "util/stack.h"
 #include <QList>
 
 StackWindow::StackWindow() :

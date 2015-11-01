@@ -1,4 +1,4 @@
-#include "queuewindow.h"
+#include "controller/queuewindow.h"
 #include "ui_queuewindow.h"
 #include <QDebug>
 #include <QStringListModel>
@@ -90,7 +90,6 @@ void QueueWindow::onDequeueButtonClicked() {
 
         ui->dequeuedItemLcdNumber->display(this->queue->dequeue());
         auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
-        queuedLineEdit->setStyleSheet("background-color: red");
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
             for (int i = 0; i < this->queue->size(); i++) {
@@ -100,8 +99,11 @@ void QueueWindow::onDequeueButtonClicked() {
                          << " to " << nextLineEdit->text();
                 lineEdit->setText(nextLineEdit->text());
             }
-            ui->tailLabel->move(this->lineEditList.at(this->queue->getTail())->x(),
-                                ui->tailLabel->y());
+            auto item = this->lineEditList.at(this->queue->getTail());
+            item->setStyleSheet("background-color: red");
+            ui->tailLabel->move(item->x(), ui->tailLabel->y());
+        } else {
+            queuedLineEdit->setStyleSheet("background-color: red");
         }
         ui->headLabel->move(
                     this->lineEditList.at(
