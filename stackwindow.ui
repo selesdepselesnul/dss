@@ -22,8 +22,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>139</x>
-     <y>361</y>
+     <x>140</x>
+     <y>380</y>
      <width>101</width>
      <height>22</height>
     </rect>
@@ -38,26 +38,16 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="topLabel">
-   <property name="geometry">
-    <rect>
-     <x>129</x>
-     <y>301</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TOP</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="item7">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>108</y>
+     <y>130</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -65,12 +55,15 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item0">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>304</y>
+     <y>340</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -78,12 +71,15 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item8">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>80</y>
+     <y>100</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -93,9 +89,9 @@
   <widget class="QPushButton" name="popButton">
    <property name="geometry">
     <rect>
-     <x>209</x>
-     <y>21</y>
-     <width>111</width>
+     <x>260</x>
+     <y>30</y>
+     <width>61</width>
      <height>22</height>
     </rect>
    </property>
@@ -103,101 +99,26 @@
     <string>Pop</string>
    </property>
   </widget>
-  <widget class="QLabel" name="stack9">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>52</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[9]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack6">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>138</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[6]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack8">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>81</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[8]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack2">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>252</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[2]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack4">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>195</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[4]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack0">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>309</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[0]</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="itemToPushedLineEdit">
    <property name="geometry">
     <rect>
-     <x>239</x>
-     <y>361</y>
+     <x>240</x>
+     <y>380</y>
      <width>81</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="item1">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>276</y>
+     <y>310</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -205,12 +126,15 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item5">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>164</y>
+     <y>190</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -218,120 +142,99 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="item9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>52</y>
+     <y>70</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack1">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>280</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[1]</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item6">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>136</y>
+     <y>160</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack5">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>166</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[5]</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="item4">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>192</y>
-     <width>59</width>
-     <height>22</height>
-    </rect>
+   <property name="enabled">
+    <bool>false</bool>
    </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack3">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>223</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[3]</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="item2">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>248</y>
-     <width>59</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stack7">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>109</y>
-     <width>26</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S[7]</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="item3">
    <property name="geometry">
     <rect>
      <x>260</x>
      <y>220</y>
      <width>59</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="readOnly">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="item2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>280</y>
+     <width>59</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="item3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>250</y>
+     <width>59</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="topLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>350</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/right.png);</string>
+   </property>
+   <property name="text">
+    <string>TOP</string>
    </property>
   </widget>
  </widget>

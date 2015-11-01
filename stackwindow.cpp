@@ -28,7 +28,9 @@ void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
     if(item != "") {
         const int size = this->stringStack->size();
-        this->qLineEditList.at(size)->setText(item);
+        auto item = this->qLineEditList.at(size);
+        item->setText(ui->itemToPushedLineEdit->text());
+        item->setStyleSheet("background-color: green");
         if(size < this->qLineEditList.size() - 1) {
             ui->topLabel->move(ui->topLabel->x(),
                                this->qLineEditList.at(size + 1)->y());
@@ -58,8 +60,10 @@ void StackWindow::showDialog(QString message) {
 void StackWindow::onPopButtonClicked() {
       const int size = this->stringStack->size();
       if(size != 0) {
+        auto item = this->qLineEditList.at(size - 1);
+        item->setStyleSheet("background-color: red");
         ui->topLabel->move(ui->topLabel->x(),
-                    this->qLineEditList.at(size - 1)->y());
+                    item->y());
         ui->itemToPushedLineEdit->setText(this->stringStack->peek());
         this->stringStack->pop();
       } else {
