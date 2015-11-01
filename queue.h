@@ -44,12 +44,15 @@ public:
     SimpleQueue(int length): Queue<T>(length){}
     int size() {
         return (this->tail == this->head) && (this->head != -1)
-                ? this->INVALID_ACCESS : Queue<T>::size();
+                ? 0 : Queue<T>::size();
     }
 
-    bool isFull() { return Queue<T>::isFull() || this->size() == INVALID_ACCESS; }
+    bool isFull() {
+        return this->size() == this->length ||
+                ( (this->tail == this->head) && (this->tail != -1) );
+    }
 
-    bool isEmpty() { return Queue<T>::isEmpty() || this->size() == INVALID_ACCESS; }
+    bool isEmpty() { return this->size() == 0 || this->tail == this->head; }
 };
 
 // Reset Queue

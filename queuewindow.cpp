@@ -59,6 +59,8 @@ void QueueWindow::onEnqueueButtonClicked() {
         auto currentItem = this->lineEditList.at(this->queue->getTail());
         currentItem->setText(ui->itemToBeEnqueue->text());
         ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
+
+    ui->queueSize->display(this->queue->size());
     } else {
         showMessage("Queue penuh");
     }
@@ -94,5 +96,6 @@ void QueueWindow::onDequeueButtonClicked() {
     } else {
         showMessage("Queue kosong");
     }
+    ui->queueSize->display(this->queue->size());
 
 }
