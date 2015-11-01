@@ -22,6 +22,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: red;</string>
+   </property>
    <property name="text">
     <string>dequeue</string>
    </property>
@@ -34,6 +37,9 @@
      <width>91</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: green;</string>
    </property>
    <property name="text">
     <string>enqueue</string>
@@ -218,6 +224,9 @@ background-color: black</string>
      <height>22</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(164, 170, 143);</string>
+   </property>
    <property name="currentText">
     <string/>
    </property>
@@ -273,6 +282,9 @@ background-color: black</string>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: green;</string>
+   </property>
   </widget>
   <widget class="QProgressBar" name="queueProgressBar">
    <property name="geometry">
@@ -282,6 +294,9 @@ background-color: black</string>
      <width>141</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="value">
     <number>24</number>
@@ -312,6 +327,9 @@ font: 16pt &quot;Nimbus Roman No9 L&quot;;</string>
      <width>91</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: green;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
