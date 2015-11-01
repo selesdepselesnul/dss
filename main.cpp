@@ -22,12 +22,14 @@ int main(int argc, char *argv[]) {
     QObject::connect(stackWindowPushButton, &QPushButton::clicked,
                      []() {
         auto stackWindow = new StackWindow();
+        stackWindow->setWindowTitle("STACK");
         stackWindow->show();
     });
 
     QObject::connect(queueWindowPushButton, &QPushButton::clicked,
                      []() {
         auto queueWindow = new QueueWindow();
+        queueWindow->setWindowTitle("QUEUE");
         queueWindow->show();
     });
 
