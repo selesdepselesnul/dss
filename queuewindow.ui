@@ -228,6 +228,33 @@ font: 16pt &quot;Nimbus Roman No9 L&quot;;</string>
     <string>Jumlah Di Dalam Antrian</string>
    </property>
   </widget>
+  <widget class="QLCDNumber" name="dequeuedItemLcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>290</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>290</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;Liberation Serif&quot;;
+font: 16pt &quot;Nimbus Roman No9 L&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Item Yang Di  Dequeue : </string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

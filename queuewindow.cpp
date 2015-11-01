@@ -68,6 +68,7 @@ void QueueWindow::onEnqueueButtonClicked() {
     } else {
         showMessage("Queue penuh");
     }
+    ui->itemToBeEnqueue->clear();
     qDebug() << "curent size is = " << this->queue->size();
 }
 
@@ -79,7 +80,7 @@ void QueueWindow::onDequeueButtonClicked() {
     if(!this->queue->isEmpty()) {
         qDebug() << "Current size is = " << this->queue->size();
 
-        ui->itemToBeEnqueue->setText(this->queue->dequeue());
+        ui->dequeuedItemLcdNumber->display(this->queue->dequeue());
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
             for (int i = 0; i < this->queue->size(); i++) {
