@@ -81,6 +81,13 @@ public:
         this->head = 0;
     }
 
+    void enqueue(T item) {
+        if(this->tail < 0) this->tail = -1;
+        if(!this->isFull()) this->container[++this->tail] = item;
+        qDebug() << "Curent tail = " << this->tail;
+    }
+
+
     T dequeue() {
         T item = !this->isEmpty() ? this->container[this->head] : NULL;
         for (int i = 0; i < this->size() - 1; i++) {
@@ -94,7 +101,7 @@ public:
 
 
     int size() {
-        if(this->tail == -1) {
+        if(this->tail < 0) {
             return 0;
         } else {
             return this->tail + 1;
