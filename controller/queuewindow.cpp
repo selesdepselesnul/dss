@@ -15,7 +15,9 @@ void QueueWindow::moveFlagToInit() {
 }
 
 void QueueWindow::makeQueueBasedOn(const auto choice) {
-    if(choice == "Simple") {
+
+    this->isShiftingMode = false;
+    if(choice == "Basic") {
         this->queue = new Queue<QString>(10);
     } else if(choice == "Reset") {
         this->queue = new ResetQueue<QString>(10);
@@ -25,6 +27,7 @@ void QueueWindow::makeQueueBasedOn(const auto choice) {
     } else {
         this->queue = new CircularQueue<QString>(10);
     }
+
 }
 
 
@@ -62,7 +65,7 @@ QueueWindow::QueueWindow() :
 
     const auto stringListModel = new QStringListModel();
     QStringList stringList;
-    stringList << "Simple" << "Reset" << "Shifting" << "Circular";
+    stringList << "Basic" << "Reset" << "Shifting" << "Circular";
     stringListModel->setStringList(stringList);
     ui->modeComboBox->setModel(stringListModel);
 

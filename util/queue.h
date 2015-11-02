@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <algorithm>
 
-// Abstract Queue
+// Basic Queue
 template<class T>
 class Queue {
 protected:
