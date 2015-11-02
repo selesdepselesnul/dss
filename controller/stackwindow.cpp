@@ -11,8 +11,10 @@
 
 StackWindow::StackWindow() :
     ui(new Ui::StackWindow) {
+
     ui->setupUi(this);
     this->stack = new Stack<QString>(10);
+
     this->qLineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
                         << ui->item4 << ui->item5 << ui->item6 << ui->item7
                         << ui->item8 << ui->item9;
@@ -25,7 +27,7 @@ StackWindow::StackWindow() :
 
 void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
-    auto regXp = new QRegExp("\\d+");
+    const auto regXp = new QRegExp("\\d+");
     if(regXp->exactMatch(item)) {
         const int size = this->stack->size();
         auto item = this->qLineEditList.at(size);
@@ -59,16 +61,16 @@ void StackWindow::showDialog(QString message) {
 }
 
 void StackWindow::onPopButtonClicked() {
-      const int size = this->stack->size();
-      if(size != 0) {
+    const int size = this->stack->size();
+    if(size != 0) {
         auto item = this->qLineEditList.at(size - 1);
         item->setStyleSheet("background-color: red");
         ui->topLabel->move(ui->topLabel->x(),
-                    item->y());
+                           item->y());
         ui->popedItemLcdNumber->display(this->stack->peek());
         this->stack->pop();
         ui->stackSizeLcdNumber->display(this->stack->size());
-      } else {
+    } else {
         showDialog("Stack kosong!");
-      }
+    }
 }

@@ -31,9 +31,11 @@ private:
     bool isShiftingMode;
     void showMessage(QString message);
     void connectOnSelectedModeComboBox();
-    void handleShiftingQueueMode();
+    void checkIfShiftingQueue();
     void moveFlagToInit();
     void tryToEnqueueItem();
+    void shiftVisualQueue();
+    void makeQueueBasedOn(const auto choice);
 };
 
 #endif // QUEUEWINDOW_H
