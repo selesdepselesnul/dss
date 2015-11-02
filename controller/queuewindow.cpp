@@ -16,7 +16,7 @@ void QueueWindow::moveFlagToInit() {
 
 void QueueWindow::makeQueueBasedOn(const auto choice) {
     if(choice == "Simple") {
-        this->queue = new SimpleQueue<QString>(10);
+        this->queue = new Queue<QString>(10);
     } else if(choice == "Reset") {
         this->queue = new ResetQueue<QString>(10);
     } else if(choice == "Shifting") {
@@ -79,7 +79,7 @@ QueueWindow::QueueWindow() :
 
     this->isShiftingMode = false;
 
-    this->queue = new SimpleQueue<QString>(10);
+    this->queue = new Queue<QString>(10);
 
 }
 
@@ -88,10 +88,19 @@ void QueueWindow::tryToEnqueueItem() {
     const auto regXp = new QRegExp("\\d+");
     if (regXp->exactMatch(item)) {
         this->queue->enqueue(item);
-        const auto currentItem = this->lineEditList.at(this->queue->getTail());
+
+        const auto currentItem = this->lineEditList.at(this->queue->getTail() - 1);
         currentItem->setStyleSheet("background-color: green");
-        currentItem->setText(ui->itemToBeEnqueue->text());
-        ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
+        currentItem ->setText(ui->itemToBeEnqueue->text());
+
+        if(this->queue->getTail() == this->lineEditList.length()) {
+            ui->tailLabel->move(ui->enqueueButton->x(), ui->tailLabel->y());
+        } else {
+
+            const auto tailItem = this->lineEditList.at(this->queue->getTail());
+            ui->tailLabel->move(tailItem ->x(), ui->tailLabel->y());
+        }
+
         ui->queueSizeLcdNumber->display(this->queue->size());
     } else {
         showMessage("Masukan hanya integer !");
@@ -111,7 +120,7 @@ void QueueWindow::showMessage(QString message) {
 }
 
 void QueueWindow::shiftVisualQueue() {
-    for (int i = 0; i < this->queue->size(); i++) {
+    for (int i = 0; i < this->queue->size() - 1; i++) {
         auto lineEdit = this->lineEditList.at(i);
         auto nextLineEdit = this->lineEditList.at(i + 1);
         lineEdit->setText(nextLineEdit->text());
@@ -122,7 +131,7 @@ void QueueWindow::checkIfShiftingQueue() {
     const auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
     if(this->isShiftingMode) {
         shiftVisualQueue();
-        const auto item = this->lineEditList.at(this->queue->getTail() + 1);
+        const auto item = this->lineEditList.at(this->queue->getTail() - 1);
         item->setStyleSheet("background-color: red");
         ui->tailLabel->move(item->x(), ui->tailLabel->y());
     } else {
@@ -131,14 +140,17 @@ void QueueWindow::checkIfShiftingQueue() {
 }
 
 void QueueWindow::onDequeueButtonClicked() {
-    const auto item = this->queue->dequeue();
-    if(item != NULL) {
-        ui->dequeuedItemLcdNumber->display(item);
+    if(!this->queue->isEmpty()) {
         checkIfShiftingQueue();
-        ui->headLabel->move(
-            this->lineEditList.at(
-            this->queue->getHead())->x(),
-            ui->headLabel->y());
+        const auto item = this->queue->dequeue();
+        ui->dequeuedItemLcdNumber->display(item);
+        if(this->queue->getHead() == this->lineEditList.length())
+            ui->headLabel->move(ui->enqueueButton->x(), ui->headLabel->y());
+        else
+            ui->headLabel->move(
+                        this->lineEditList.at(
+                            this->queue->getHead())->x(),
+                        ui->headLabel->y());
         ui->queueSizeLcdNumber->display(this->queue->size());
     } else {
         showMessage("Queue kosong");
