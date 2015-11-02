@@ -27,7 +27,9 @@ public:
         if(!this->isFull()) this->container[++this->tail] = item;
         qDebug() << "Curent tail = " << this->tail;
     }
-    virtual T dequeue() { return !this->isEmpty() ? this->container[++this->head] : NULL; }
+    virtual T dequeue() {
+        return !this->isEmpty() ? this->container[++this->head] : NULL;
+    }
     virtual bool isFull() { return size() == this->length; }
     virtual bool isEmpty() { return size() == 0; }
     int getLength() { return this->length; }
@@ -38,8 +40,6 @@ public:
 // SimpleQueue
 template<class T>
 class SimpleQueue : public Queue<T> {
-private:
-    const int INVALID_ACCESS = -9999;
 public:
     SimpleQueue(int length): Queue<T>(length){}
     int size() {

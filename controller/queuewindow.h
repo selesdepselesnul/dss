@@ -30,6 +30,9 @@ private:
     QPoint initTailPos;
     bool isShiftingMode;
     void showMessage(QString message);
+    void connectOnSelectedModeComboBox();
+    void handleShiftingQueueMode();
+    void moveFlagToInit();
 };
 
 #endif // QUEUEWINDOW_H

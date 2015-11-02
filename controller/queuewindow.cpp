@@ -9,6 +9,35 @@
 #include <algorithm>
 #include <QRegExp>
 
+void QueueWindow::moveFlagToInit() {
+    ui->headLabel->move(this->initHeadPos);
+    ui->tailLabel->move(this->initTailPos);
+}
+
+void QueueWindow::connectOnSelectedModeComboBox() {
+    connect(ui->modeComboBox,static_cast<void(QComboBox::*)
+            (const QString &)>(&QComboBox::activated),
+            [&](const QString &text){
+        if(text == "Simple") {
+            this->queue = new SimpleQueue<QString>(10);
+        } else if(text == "Reset") {
+            this->queue = new ResetQueue<QString>(10);
+        } else if(text == "Shifting") {
+            this->queue = new ShiftingQueue<QString>(10);
+            this->isShiftingMode = true;
+        } else {
+            this->queue = new CircularQueue<QString>(10);
+        }
+        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
+                      [](QLineEdit *x) {
+            x->setStyleSheet("background-color: black");
+        });
+        moveFlagToInit();
+        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
+                      [](QLineEdit *x) {x->clear();});
+    });
+}
+
 QueueWindow::QueueWindow() :
     ui(new Ui::QueueWindow) {
     ui->setupUi(this);
@@ -30,35 +59,14 @@ QueueWindow::QueueWindow() :
 
     this->queue = new SimpleQueue<QString>(10);
 
-    QStringListModel *stringListModel = new QStringListModel();
+    auto stringListModel = new QStringListModel();
     QStringList stringList;
     stringList << "Simple" << "Reset" << "Shifting" << "Circular";
     stringListModel->setStringList(stringList);
 
     ui->modeComboBox->setModel(stringListModel);
 
-    connect(ui->modeComboBox,static_cast<void(QComboBox::*)
-            (const QString &)>(&QComboBox::activated),
-            [&](const QString &text){
-        if(text == "Simple") {
-            this->queue = new SimpleQueue<QString>(10);
-        } else if(text == "Reset") {
-            this->queue = new ResetQueue<QString>(10);
-        } else if(text == "Shifting") {
-            this->queue = new ShiftingQueue<QString>(10);
-            this->isShiftingMode = true;
-        } else {
-            this->queue = new CircularQueue<QString>(10);
-        }
-        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
-                      [](QLineEdit *x) {
-            x->setStyleSheet("background-color: black");
-        });
-        ui->headLabel->move(this->initHeadPos);
-        ui->tailLabel->move(this->initTailPos);
-        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
-                      [](QLineEdit *x) {x->clear();});
-    });
+    connectOnSelectedModeComboBox();
 }
 
 void QueueWindow::onEnqueueButtonClicked() {
@@ -87,6 +95,19 @@ void QueueWindow::showMessage(QString message) {
     QMessageBox::information(this, "Tidak valid", message);
 }
 
+void QueueWindow::handleShiftingQueueMode() {
+    for (int i = 0; i < this->queue->size(); i++) {
+        auto lineEdit = this->lineEditList.at(i);
+        auto nextLineEdit = this->lineEditList.at(i + 1);
+        qDebug() << "Change " << lineEdit->text()
+                 << " to " << nextLineEdit->text();
+        lineEdit->setText(nextLineEdit->text());
+    }
+    auto item = this->lineEditList.at(this->queue->getTail() + 1);
+    item->setStyleSheet("background-color: red");
+    ui->tailLabel->move(item->x(), ui->tailLabel->y());
+}
+
 void QueueWindow::onDequeueButtonClicked() {
     auto item = this->queue->dequeue();
     if(item != NULL) {
@@ -97,16 +118,7 @@ void QueueWindow::onDequeueButtonClicked() {
         auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
         if(this->isShiftingMode) {
             qDebug() << "In shifting mode!";
-            for (int i = 0; i < this->queue->size(); i++) {
-                QLineEdit* lineEdit = this->lineEditList.at(i);
-                QLineEdit* nextLineEdit = this->lineEditList.at(i + 1);
-                qDebug() << "Change " << lineEdit->text()
-                         << " to " << nextLineEdit->text();
-                lineEdit->setText(nextLineEdit->text());
-            }
-            auto item = this->lineEditList.at(this->queue->getTail() + 1);
-            item->setStyleSheet("background-color: red");
-            ui->tailLabel->move(item->x(), ui->tailLabel->y());
+            handleShiftingQueueMode();
         } else {
             queuedLineEdit->setStyleSheet("background-color: red");
         }
@@ -116,7 +128,6 @@ void QueueWindow::onDequeueButtonClicked() {
                     ui->headLabel->y());
 
         ui->queueSizeLcdNumber->display(this->queue->size());
-
     } else {
         showMessage("Queue kosong");
     }
