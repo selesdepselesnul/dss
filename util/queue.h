@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <algorithm>
 
-// Base Abstract Queue
+// Abstract Queue
 template<class T>
 class Queue {
 protected:
@@ -25,7 +25,6 @@ public:
     virtual int size() { return this->tail - this->head;}
     virtual void enqueue(T item) {
         if(!this->isFull()) this->container[++this->tail] = item;
-        qDebug() << "Curent tail = " << this->tail;
     }
     virtual T dequeue() {
         return !this->isEmpty() ? this->container[++this->head] : NULL;
@@ -63,7 +62,6 @@ public:
 public:
     void enqueue(T item) {
         if(!this->isFull()) this->container[++this->tail] = item;
-        qDebug() << "Curent tail = " << this->tail;
     }
     T dequeue() {
         if(this->head == this->tail) {
@@ -87,7 +85,6 @@ public:
     void enqueue(T item) {
         if(this->tail < 0) this->tail = -1;
         if(!this->isFull()) this->container[++this->tail] = item;
-        qDebug() << "Curent tail = " << this->tail;
     }
 
 
@@ -96,8 +93,6 @@ public:
         for (int i = 0; i < this->size() - 1; i++) {
             this->container[i] = this->container[i + 1];
         }
-        qDebug() << "item dequeue : " << item;
-        qDebug() << "Current tail is = " << this->tail;
         --this->tail;
         return item;
     }
@@ -141,7 +136,6 @@ public:
 
     void checkPos() {
         if(this->counter != this->length) {
-            qDebug() << "inside";
             if(this->tail == this->length - 1) {
                 this->tail = -1;
             } else if(this->head == this->length - 1) {

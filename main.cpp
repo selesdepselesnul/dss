@@ -4,6 +4,28 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 
+void handleStackWindow(auto stackWindowPushButton) {
+    QObject::connect(stackWindowPushButton, &QPushButton::clicked,
+                     []() {
+        auto stackWindow = new StackWindow();
+        stackWindow->setWindowTitle("STACK");
+        stackWindow->setWindowModality(Qt::ApplicationModal);
+        stackWindow->setFixedSize(419, 429);
+        stackWindow->show();
+    });
+}
+
+void handleQueueWindow(auto queueWindowPushButton) {
+    QObject::connect(queueWindowPushButton, &QPushButton::clicked,
+                     []() {
+        auto queueWindow = new QueueWindow();
+        queueWindow->setWindowTitle("QUEUE");
+        queueWindow->setWindowModality(Qt::ApplicationModal);
+        queueWindow->setFixedSize(695, 373);
+        queueWindow->show();
+    });
+}
+
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
@@ -19,24 +41,9 @@ int main(int argc, char *argv[]) {
     vBoxLayout->addWidget(stackWindowPushButton);
     vBoxLayout->addWidget(queueWindowPushButton);
 
-    QObject::connect(stackWindowPushButton, &QPushButton::clicked,
-                     []() {
-        auto stackWindow = new StackWindow();
-        stackWindow->setWindowTitle("STACK");
-        stackWindow->setWindowModality(Qt::ApplicationModal);
-        stackWindow->setFixedSize(419, 429);
-        stackWindow->show();
-    });
+    handleStackWindow(stackWindowPushButton);
 
-    QObject::connect(queueWindowPushButton, &QPushButton::clicked,
-                     []() {
-        auto queueWindow = new QueueWindow();
-        queueWindow->setWindowTitle("QUEUE");
-        queueWindow->setWindowModality(Qt::ApplicationModal);
-        queueWindow->setFixedSize(695, 373);
-        queueWindow->show();
-    });
-
+    handleQueueWindow(queueWindowPushButton);
 
     mainWindow->setLayout(vBoxLayout);
     mainWindow->setWindowTitle("DSS");

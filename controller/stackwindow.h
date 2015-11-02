@@ -23,7 +23,7 @@ private:
     void showDialog(QString message);
     Ui::StackWindow *ui;
     QList<QLineEdit*> qLineEditList;
-    Stack<QString> *stringStack;
+    Stack<QString> *stack;
     void pushToLineEdit();
 };
 

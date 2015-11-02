@@ -12,12 +12,12 @@
 StackWindow::StackWindow() :
     ui(new Ui::StackWindow) {
     ui->setupUi(this);
+    this->stack = new Stack<QString>(10);
     this->qLineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
                         << ui->item4 << ui->item5 << ui->item6 << ui->item7
                         << ui->item8 << ui->item9;
 
 
-    this->stringStack = new Stack<QString>(10);
 
     connect(ui->pushButton, &QPushButton::clicked,
             this, &StackWindow::onPushButtonClicked);
@@ -29,7 +29,7 @@ void StackWindow::pushToLineEdit() {
     const QString item = ui->itemToPushedLineEdit->text();
     auto regXp = new QRegExp("\\d+");
     if(regXp->exactMatch(item)) {
-        const int size = this->stringStack->size();
+        const int size = this->stack->size();
         auto item = this->qLineEditList.at(size);
         item->setText(ui->itemToPushedLineEdit->text());
         item->setStyleSheet("background-color: green");
@@ -40,15 +40,15 @@ void StackWindow::pushToLineEdit() {
             ui->topLabel->move(ui->topLabel->x(),
                                ui->popButton->y());
         }
-        this->stringStack->push(ui->itemToPushedLineEdit->text());
-        ui->stackSizeLcdNumber->display(this->stringStack->size());
+        this->stack->push(ui->itemToPushedLineEdit->text());
+        ui->stackSizeLcdNumber->display(this->stack->size());
     } else {
         showDialog("item harus integer !");
     }
 }
 
 void StackWindow::onPushButtonClicked() {
-    if(this->stringStack->size() != this->stringStack->getLength()) {
+    if(this->stack->size() != this->stack->getLength()) {
         pushToLineEdit();
     } else {
         showDialog("Stack penuh!");
@@ -61,15 +61,15 @@ void StackWindow::showDialog(QString message) {
 }
 
 void StackWindow::onPopButtonClicked() {
-      const int size = this->stringStack->size();
+      const int size = this->stack->size();
       if(size != 0) {
         auto item = this->qLineEditList.at(size - 1);
         item->setStyleSheet("background-color: red");
         ui->topLabel->move(ui->topLabel->x(),
                     item->y());
-        ui->popedItemLcdNumber->display(this->stringStack->peek());
-        this->stringStack->pop();
-        ui->stackSizeLcdNumber->display(this->stringStack->size());
+        ui->popedItemLcdNumber->display(this->stack->peek());
+        this->stack->pop();
+        ui->stackSizeLcdNumber->display(this->stack->size());
       } else {
         showDialog("Stack kosong!");
       }

@@ -88,7 +88,6 @@ void QueueWindow::onEnqueueButtonClicked() {
         showMessage("Queue penuh");
     }
     ui->itemToBeEnqueue->clear();
-    qDebug() << "curent size is = " << this->queue->size();
 }
 
 void QueueWindow::showMessage(QString message) {
@@ -99,8 +98,6 @@ void QueueWindow::handleShiftingQueueMode() {
     for (int i = 0; i < this->queue->size(); i++) {
         auto lineEdit = this->lineEditList.at(i);
         auto nextLineEdit = this->lineEditList.at(i + 1);
-        qDebug() << "Change " << lineEdit->text()
-                 << " to " << nextLineEdit->text();
         lineEdit->setText(nextLineEdit->text());
     }
     auto item = this->lineEditList.at(this->queue->getTail() + 1);
@@ -111,9 +108,6 @@ void QueueWindow::handleShiftingQueueMode() {
 void QueueWindow::onDequeueButtonClicked() {
     auto item = this->queue->dequeue();
     if(item != NULL) {
-        qDebug() << "Current size is = " << this->queue->size();
-        qDebug() << "Head is = " << this->queue->getHead();
-
         ui->dequeuedItemLcdNumber->display(item);
         auto queuedLineEdit = this->lineEditList.at(this->queue->getHead());
         if(this->isShiftingMode) {
