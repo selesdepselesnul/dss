@@ -29,7 +29,7 @@ void handleQueueWindow(auto queueWindowPushButton) {
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    auto *mainWindow = new QWidget();
+    auto mainWindow = new QWidget();
 
     auto stackWindowPushButton = new QPushButton();
     stackWindowPushButton->setText("Stack Simulation");

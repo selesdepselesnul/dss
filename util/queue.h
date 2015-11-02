@@ -64,9 +64,8 @@ public:
         if(!this->isFull()) this->container[++this->tail] = item;
     }
     T dequeue() {
-        if(this->head == this->tail) {
+        if(this->head == this->tail)
             this->initCounter();
-        }
         return this->size() == 0 ? 0 : this->container[++this->head];
     }
 
@@ -99,11 +98,7 @@ public:
 
 
     int size() {
-        if(this->tail < 0) {
-            return 0;
-        } else {
-            return this->tail + 1;
-        }
+        return this->tail < 0 ? 0 : this->tail + 1;
     }
 
 };
@@ -134,14 +129,15 @@ public:
         }
     }
 
+    void moveFlagPosition() {
+        if(this->tail == this->length - 1)
+            this->tail = -1;
+        else if(this->head == this->length - 1)
+            this->head = -1;
+    }
+
     void checkPos() {
-        if(this->counter != this->length) {
-            if(this->tail == this->length - 1) {
-                this->tail = -1;
-            } else if(this->head == this->length - 1) {
-                this->head = -1;
-            }
-        }
+        if(this->counter != this->length) moveFlagPosition();
     }
 
     int size() {

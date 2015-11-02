@@ -69,21 +69,25 @@ QueueWindow::QueueWindow() :
     connectOnSelectedModeComboBox();
 }
 
+void QueueWindow::tryToEnqueueItem() {
+    auto item = ui->itemToBeEnqueue->text();
+    auto regXp = new QRegExp("\\d+");
+    if (regXp->exactMatch(item)) {
+        this->queue->enqueue(item);
+        auto currentItem = this->lineEditList.at(this->queue->getTail());
+        currentItem->setStyleSheet("background-color: green");
+        currentItem->setText(ui->itemToBeEnqueue->text());
+        ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
+
+        ui->queueSizeLcdNumber->display(this->queue->size());
+    } else {
+        showMessage("Masukan hanya integer !");
+    }
+}
+
 void QueueWindow::onEnqueueButtonClicked() {
     if(!this->queue->isFull()) {
-        auto item = ui->itemToBeEnqueue->text();
-        auto regXp = new QRegExp("\\d+");
-        if (regXp->exactMatch(item)) {
-            this->queue->enqueue(item);
-            auto currentItem = this->lineEditList.at(this->queue->getTail());
-            currentItem->setStyleSheet("background-color: green");
-            currentItem->setText(ui->itemToBeEnqueue->text());
-            ui->tailLabel->move(currentItem->x(), ui->tailLabel->y());
-
-            ui->queueSizeLcdNumber->display(this->queue->size());
-        } else {
-            showMessage("Masukan hanya integer !");
-        }
+        tryToEnqueueItem();
     } else {
         showMessage("Queue penuh");
     }

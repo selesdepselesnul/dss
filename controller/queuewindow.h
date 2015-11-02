@@ -33,6 +33,7 @@ private:
     void connectOnSelectedModeComboBox();
     void handleShiftingQueueMode();
     void moveFlagToInit();
+    void tryToEnqueueItem();
 };
 
 #endif // QUEUEWINDOW_H

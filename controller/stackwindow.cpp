@@ -17,8 +17,6 @@ StackWindow::StackWindow() :
                         << ui->item4 << ui->item5 << ui->item6 << ui->item7
                         << ui->item8 << ui->item9;
 
-
-
     connect(ui->pushButton, &QPushButton::clicked,
             this, &StackWindow::onPushButtonClicked);
     connect(ui->popButton, &QPushButton::clicked,
