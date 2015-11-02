@@ -58,7 +58,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -75,7 +75,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -92,7 +92,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -109,7 +109,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -126,7 +126,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -143,7 +143,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -160,7 +160,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -177,7 +177,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color : black;
 background-color: black</string>
    </property>
   </widget>
@@ -194,7 +194,7 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
+    <string notr="true">color: black;
 background-color: black</string>
    </property>
   </widget>
@@ -211,8 +211,8 @@ background-color: black</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color : rgb(0, 0, 0);
-background-color: black</string>
+    <string notr="true">background-color: black;
+color: black;</string>
    </property>
   </widget>
   <widget class="QComboBox" name="modeComboBox">

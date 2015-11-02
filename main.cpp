@@ -23,6 +23,8 @@ int main(int argc, char *argv[]) {
                      []() {
         auto stackWindow = new StackWindow();
         stackWindow->setWindowTitle("STACK");
+        stackWindow->setWindowModality(Qt::ApplicationModal);
+        stackWindow->setFixedSize(419, 429);
         stackWindow->show();
     });
 
@@ -30,6 +32,8 @@ int main(int argc, char *argv[]) {
                      []() {
         auto queueWindow = new QueueWindow();
         queueWindow->setWindowTitle("QUEUE");
+        queueWindow->setWindowModality(Qt::ApplicationModal);
+        queueWindow->setFixedSize(695, 373);
         queueWindow->show();
     });
 
@@ -38,7 +42,6 @@ int main(int argc, char *argv[]) {
     mainWindow->setWindowTitle("DSS");
     mainWindow->setFixedHeight(300);
     mainWindow->setFixedWidth(300);
-    mainWindow->setWindowModality(Qt::WindowModal);
     mainWindow->show();
 
     return app.exec();

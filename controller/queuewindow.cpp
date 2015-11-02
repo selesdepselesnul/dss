@@ -37,7 +37,8 @@ QueueWindow::QueueWindow() :
 
     ui->modeComboBox->setModel(stringListModel);
 
-    connect(ui->modeComboBox,static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
+    connect(ui->modeComboBox,static_cast<void(QComboBox::*)
+            (const QString &)>(&QComboBox::activated),
             [&](const QString &text){
         if(text == "Simple") {
             this->queue = new SimpleQueue<QString>(10);
@@ -55,6 +56,8 @@ QueueWindow::QueueWindow() :
         });
         ui->headLabel->move(this->initHeadPos);
         ui->tailLabel->move(this->initTailPos);
+        std::for_each(this->lineEditList.begin(), this->lineEditList.end(),
+                      [](QLineEdit *x) {x->clear();});
     });
 }
 
@@ -103,9 +106,6 @@ void QueueWindow::onDequeueButtonClicked() {
             }
             auto item = this->lineEditList.at(this->queue->getTail() + 1);
             item->setStyleSheet("background-color: red");
-//            this->lineEditList.at(
-//                        this->queue->getTail())
-//                    ->setStyleSheet("background-color: red");
             ui->tailLabel->move(item->x(), ui->tailLabel->y());
         } else {
             queuedLineEdit->setStyleSheet("background-color: red");
