@@ -21,7 +21,15 @@ BankQueueWindow::BankQueueWindow() :
 
     connect(ui->teller1Button, &QPushButton::clicked,
             [=](){
-        qDebug() << "Teller 1";
+        this->lineEditList.at(this->circularQueue->getHead())->setStyleSheet("background-color: red");
+        const auto currentQueueNumber = this->circularQueue->dequeue();
+        ui->queueLcdNumber->display(currentQueueNumber);
+        ui->tellerLcdNumber->setStyleSheet("background-color: rgb(170, 170, 0);");
+        ui->tellerLcdNumber->display("1");
+        ui->queueLcdNumber->setStyleSheet("background-color: red");
+        ui->headLabel->move(this->lineEditList.at(this->circularQueue->getHead())->x(),
+                            ui->headLabel->y());
+        ui->queueSizeLcdNumber->display(this->circularQueue->size());
     });
 
     connect(ui->teller2Button, &QPushButton::clicked,
@@ -38,7 +46,6 @@ BankQueueWindow::BankQueueWindow() :
             [](){
        qDebug() << "Teller 4";
     });
-
 }
 
 void BankQueueWindow::onGetQueueNumberButtonClicked() {
