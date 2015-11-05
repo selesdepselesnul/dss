@@ -1,12 +1,12 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "ui_bankqueuewindow.h"
 #include <QPushButton>
 #include <QDebug>
 #include <QMessageBox>
-#include "queue.h"
+#include "util/queue.h"
+#include "controller/bankqueuewindow.h"
 
-MainWindow::MainWindow() :
-    ui(new Ui::MainWindow) {
+BankQueueWindow::BankQueueWindow() :
+    ui(new Ui::BankQueueWindow) {
     ui->setupUi(this);
     this->queueNumber = 1;
     this->circularQueue = new CircularQueue<int>(10);
@@ -16,10 +16,10 @@ MainWindow::MainWindow() :
                        << ui->item8 << ui->item9;
 
     connect(ui->getQueueNumberButton, &QPushButton::clicked,
-            this, &MainWindow::onGetQueueNumberButtonClicked);
+            this, &BankQueueWindow::onGetQueueNumberButtonClicked);
 }
 
-void MainWindow::onGetQueueNumberButtonClicked() {
+void BankQueueWindow::onGetQueueNumberButtonClicked() {
     if(this->circularQueue->isFull()) {
         QMessageBox::information(this, "Tidak Valid", "Antrian Penuh !");
     } else {

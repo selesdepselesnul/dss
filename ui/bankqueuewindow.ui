@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>BankQueueWindow</class>
+ <widget class="QMainWindow" name="BankQueueWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -250,7 +250,7 @@ background-color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/dss/resource/right.png);</string>
+     <string notr="true">image: url(:/resource/right.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -361,7 +361,7 @@ background-color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/dss/resource/down.png);</string>
+     <string notr="true">image: url(:/resource/down.png);</string>
     </property>
     <property name="text">
      <string>head</string>
@@ -377,7 +377,7 @@ background-color: black</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/dss/resource/up.png);</string>
+     <string notr="true">image: url(:/resource/up.png);</string>
     </property>
     <property name="text">
      <string>tail</string>

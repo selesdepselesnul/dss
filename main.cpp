@@ -1,5 +1,6 @@
 #include "controller/stackwindow.h"
 #include "controller/queuewindow.h"
+#include "controller/bankqueuewindow.h"
 #include <QApplication>
 #include <QVBoxLayout>
 #include <QPushButton>
@@ -26,6 +27,18 @@ void handleQueueWindow(auto queueWindowPushButton) {
     });
 }
 
+void hadleBankQueueWindow(auto bankQueueWindowPushButton) {
+    QObject::connect(bankQueueWindowPushButton, &QPushButton::clicked,
+                     []() {
+        auto bankQueueWindow = new BankQueueWindow();
+        bankQueueWindow->setWindowTitle("Bank QUEUE -QUEUE in Action-");
+        bankQueueWindow->setWindowModality(Qt::ApplicationModal);
+        bankQueueWindow->setFixedSize(600, 346);
+        bankQueueWindow->show();
+    });
+}
+
+
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
@@ -37,13 +50,19 @@ int main(int argc, char *argv[]) {
     auto queueWindowPushButton = new QPushButton();
     queueWindowPushButton->setText("Queue Simulation");
 
+    auto bankQueueWindowPushButton = new QPushButton();
+    bankQueueWindowPushButton->setText("Bank Queue Simulation");
+
     auto vBoxLayout = new QVBoxLayout();
     vBoxLayout->addWidget(stackWindowPushButton);
     vBoxLayout->addWidget(queueWindowPushButton);
+    vBoxLayout->addWidget(bankQueueWindowPushButton);
 
     handleStackWindow(stackWindowPushButton);
 
     handleQueueWindow(queueWindowPushButton);
+
+    hadleBankQueueWindow(bankQueueWindowPushButton);
 
     mainWindow->setLayout(vBoxLayout);
     mainWindow->setWindowTitle("DSS");

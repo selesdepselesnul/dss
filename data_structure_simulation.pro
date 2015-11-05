@@ -16,16 +16,19 @@ TEMPLATE = app
 SOURCES += main.cpp \
     controller/stackwindow.cpp \
     controller/queuewindow.cpp \
+    controller/bankqueuewindow.cpp
 
 HEADERS  += \
     util/stack.h \
     util/queue.h \
     controller/stackwindow.h \
-    controller/queuewindow.h
+    controller/queuewindow.h \
+    controller/bankqueuewindow.h
 
 FORMS    += \
     ui/stackwindow.ui \
-    ui/queuewindow.ui
+    ui/queuewindow.ui \
+    ui/bankqueuewindow.ui
 
 RESOURCES += \
     dss_icon.qrc

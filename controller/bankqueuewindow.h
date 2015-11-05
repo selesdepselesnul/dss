@@ -4,22 +4,22 @@
 #include <QMainWindow>
 #include <QList>
 #include <QLineEdit>
-#include "queue.h"
+#include "util/queue.h"
 
 namespace Ui {
-class MainWindow;
+class BankQueueWindow;
 }
 
-class MainWindow : public QMainWindow
+class BankQueueWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow();
+    explicit BankQueueWindow();
 private slots:
     void onGetQueueNumberButtonClicked();
 private:
-    Ui::MainWindow *ui;
+    Ui::BankQueueWindow *ui;
     int queueNumber;
     QList<QLineEdit*> lineEditList;
     CircularQueue<int> *circularQueue;
