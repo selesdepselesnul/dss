@@ -2,6 +2,7 @@
 #include <QPushButton>
 #include <QDebug>
 #include <QMessageBox>
+#include <algorithm>
 #include "util/queue.h"
 #include "controller/bankqueuewindow.h"
 
@@ -17,6 +18,27 @@ BankQueueWindow::BankQueueWindow() :
 
     connect(ui->getQueueNumberButton, &QPushButton::clicked,
             this, &BankQueueWindow::onGetQueueNumberButtonClicked);
+
+    connect(ui->teller1Button, &QPushButton::clicked,
+            [=](){
+        qDebug() << "Teller 1";
+    });
+
+    connect(ui->teller2Button, &QPushButton::clicked,
+            [](){
+       qDebug() << "Teller 2";
+    });
+
+    connect(ui->teller3Button, &QPushButton::clicked,
+            [](){
+       qDebug() << "Teller 3";
+    });
+
+    connect(ui->teller4Button, &QPushButton::clicked,
+            [](){
+       qDebug() << "Teller 4";
+    });
+
 }
 
 void BankQueueWindow::onGetQueueNumberButtonClicked() {
@@ -25,6 +47,7 @@ void BankQueueWindow::onGetQueueNumberButtonClicked() {
     } else {
         const int currentQueueNumber = this->queueNumber++;
         const auto currentLineEdit = this->lineEditList.at(this->circularQueue->size());
+        currentLineEdit->setText(QString::number(currentQueueNumber));
         currentLineEdit->setStyleSheet("background-color : green");
         this->circularQueue->enqueue(currentQueueNumber);
         if(this->lineEditList.length() != this->circularQueue->size()) {
@@ -35,4 +58,5 @@ void BankQueueWindow::onGetQueueNumberButtonClicked() {
             ui->tailLabel->move(ui->getQueueNumberButton->x(), ui->tailLabel->y());
         }
     }
+    ui->queueSizeLcdNumber->display(this->circularQueue->size());
 }

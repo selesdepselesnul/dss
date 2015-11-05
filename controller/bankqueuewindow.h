@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QList>
 #include <QLineEdit>
+#include <QPushButton>
 #include "util/queue.h"
 
 namespace Ui {
