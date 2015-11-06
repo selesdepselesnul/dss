@@ -24,8 +24,8 @@ private:
     int queueNumber;
     QList<QLineEdit*> lineEditList;
     CircularQueue<int> *circularQueue;
-    void dequeue(int tellerNumber, QString color);
     void showMessage(QString message);
+    void onDequeue(QPushButton *tellerButton, int tellerNumber);
 };
 
 #endif // MAINWINDOW_H

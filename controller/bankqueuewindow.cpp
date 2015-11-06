@@ -19,42 +19,30 @@ BankQueueWindow::BankQueueWindow() :
     connect(ui->getQueueNumberButton, &QPushButton::clicked,
             this, &BankQueueWindow::onGetQueueNumberButtonClicked);
 
-    connect(ui->teller1Button, &QPushButton::clicked,
-            [=](){
-        dequeue(1, "background-color: rgb(170, 170, 0);");
-    });
-
-    connect(ui->teller2Button, &QPushButton::clicked,
-            [=](){
-        dequeue(2, "background-color: rgb(85, 0, 127)");
-    });
-
-    connect(ui->teller3Button, &QPushButton::clicked,
-            [=](){
-        dequeue(3, "background-color: rgb(85, 255, 255)");
-    });
-
-    connect(ui->teller4Button, &QPushButton::clicked,
-            [=](){
-        dequeue(4, "background-color: rgb(255, 170, 0)");
-    });
+    onDequeue(ui->teller1Button, 1);
+    onDequeue(ui->teller2Button, 2);
+    onDequeue(ui->teller3Button, 3);
+    onDequeue(ui->teller4Button, 4);
 }
 
-void BankQueueWindow::dequeue(int tellerNumber, QString color) {
-    if(this->circularQueue->isEmpty()) {
-        showMessage("Antrian Kosong !");
-    } else {
-        this->lineEditList.at(this->circularQueue->getHead())->
-                setStyleSheet(color);
-        const auto currentQueueNumber = this->circularQueue->dequeue();
-        ui->queueLcdNumber->display(currentQueueNumber);
-        ui->tellerLcdNumber->display(tellerNumber);
-        ui->tellerLcdNumber->setStyleSheet(color);
-        ui->queueLcdNumber->setStyleSheet("background-color: red");
-        ui->headLabel->move(this->lineEditList.at(this->circularQueue->getHead())->x(),
-                            ui->headLabel->y());
-        ui->queueSizeLcdNumber->display(this->circularQueue->size());
-    }
+void BankQueueWindow::onDequeue(QPushButton* tellerButton, int tellerNumber) {
+    connect(tellerButton, &QPushButton::clicked,
+            [=](){
+        if(this->circularQueue->isEmpty()) {
+            showMessage("Antrian Kosong !");
+        } else {
+            this->lineEditList.at(this->circularQueue->getHead())->
+                    setStyleSheet(tellerButton->styleSheet());
+            const auto currentQueueNumber = this->circularQueue->dequeue();
+            ui->queueLcdNumber->display(currentQueueNumber);
+            ui->tellerLcdNumber->display(tellerNumber);
+            ui->tellerLcdNumber->setStyleSheet(tellerButton->styleSheet());
+            ui->queueLcdNumber->setStyleSheet("background-color: red");
+            ui->headLabel->move(this->lineEditList.at(this->circularQueue->getHead())->x(),
+                                ui->headLabel->y());
+            ui->queueSizeLcdNumber->display(this->circularQueue->size());
+        }
+    });
 }
 
 void BankQueueWindow::onGetQueueNumberButtonClicked() {
