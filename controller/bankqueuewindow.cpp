@@ -25,18 +25,18 @@ BankQueueWindow::BankQueueWindow() :
     });
 
     connect(ui->teller2Button, &QPushButton::clicked,
-            [](){
-       qDebug() << "Teller 2";
+            [=](){
+        dequeue(2, "background-color: rgb(85, 0, 127)");
     });
 
     connect(ui->teller3Button, &QPushButton::clicked,
-            [](){
-       qDebug() << "Teller 3";
+            [=](){
+        dequeue(3, "background-color: rgb(85, 255, 255)");
     });
 
     connect(ui->teller4Button, &QPushButton::clicked,
-            [](){
-       qDebug() << "Teller 4";
+            [=](){
+        dequeue(4, "background-color: rgb(255, 170, 0)");
     });
 }
 
@@ -44,7 +44,8 @@ void BankQueueWindow::dequeue(int tellerNumber, QString color) {
     if(this->circularQueue->isEmpty()) {
         showMessage("Antrian Kosong !");
     } else {
-        this->lineEditList.at(this->circularQueue->getHead())->setStyleSheet("background-color: red");
+        this->lineEditList.at(this->circularQueue->getHead())->
+                setStyleSheet(color);
         const auto currentQueueNumber = this->circularQueue->dequeue();
         ui->queueLcdNumber->display(currentQueueNumber);
         ui->tellerLcdNumber->display(tellerNumber);
@@ -53,8 +54,6 @@ void BankQueueWindow::dequeue(int tellerNumber, QString color) {
         ui->headLabel->move(this->lineEditList.at(this->circularQueue->getHead())->x(),
                             ui->headLabel->y());
         ui->queueSizeLcdNumber->display(this->circularQueue->size());
-
-
     }
 }
 
@@ -83,32 +82,6 @@ void BankQueueWindow::onGetQueueNumberButtonClicked() {
         showMessage("Queue penuh");
 
     }
-    //    if(this->circularQueue->isFull()) {
-    //        showMessage("Antrian Penuh");
-    //    } else {
-    //        if(this->circularQueue->getTail() == this->lineEditList.length()) {
-    //            ui->tailLabel->move(ui->getQueueNumberButton->x(), ui->tailLabel->y());
-    //        } else {
-    //            const int currentQueueNumber = this->queueNumber++;
-    //            const auto currentLineEdit = this->lineEditList.at(this->circularQueue->getTail());
-    //            currentLineEdit->setText(QString::number(currentQueueNumber));
-    //            currentLineEdit->setStyleSheet("background-color : green");
-
-    //            this->circularQueue->enqueue(currentQueueNumber);
-    //            const auto tailItem = this->lineEditList.at(this->circularQueue->getTail());
-    //            qDebug() << "Current tail = " << this->circularQueue->getTail();
-    //            ui->tailLabel->move(tailItem->x(), ui->tailLabel->y());
-
-    //        }
-    //        //        if(this->lineEditList.length() != this->circularQueue->getTail()) {
-    //        //            ui->tailLabel->move(this->lineEditList.at(
-    //        //                                    this->circularQueue->getTail())->x(),
-    //        //                                ui->tailLabel->y());
-    //        //        } else {
-    //        //            ui->tailLabel->move(ui->getQueueNumberButton->x(), ui->tailLabel->y());
-    //        //        }
-    //    }
-    //    ui->queueSizeLcdNumber->display(this->circularQueue->size());
 }
 
 void BankQueueWindow::showMessage(QString message) {
