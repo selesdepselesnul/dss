@@ -24,7 +24,7 @@ HEADERS  += \
     controller/stackwindow.h \
     controller/queuewindow.h \
     controller/bankqueuewindow.h \
-    controller/teller.h
+    model/teller.h
 
 FORMS    += \
     ui/stackwindow.ui \

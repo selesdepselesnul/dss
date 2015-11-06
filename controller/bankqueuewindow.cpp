@@ -67,7 +67,7 @@ void BankQueueWindow::onGetQueueNumberButtonClicked() {
 
     } else {
 
-        showMessage("Queue penuh");
+        showMessage("Antrian penuh");
 
     }
 }
