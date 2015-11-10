@@ -2,15 +2,19 @@
 #include <QPushButton>
 #include <QDebug>
 #include <QMessageBox>
+#include <QFile>
+#include <QDataStream>
+#include <QIODevice>
 #include <algorithm>
 #include "util/queue.h"
 #include "controller/bankqueuewindow.h"
+#include "teller.h"
 
 BankQueueWindow::BankQueueWindow() :
     ui(new Ui::BankQueueWindow) {
     ui->setupUi(this);
     this->queueNumber = 1;
-    this->circularQueue = new CircularQueue<int>(10);
+    this->circularQueue = new CircularQueue<qint32>(10);
 
     this->lineEditList << ui->item0 << ui->item1 << ui->item2 << ui->item3
                        << ui->item4 << ui->item5 << ui->item6 << ui->item7
@@ -25,7 +29,7 @@ BankQueueWindow::BankQueueWindow() :
     onDequeue(ui->teller4Button, 4);
 }
 
-void BankQueueWindow::onDequeue(QPushButton* tellerButton, int tellerNumber) {
+void BankQueueWindow::onDequeue(QPushButton* tellerButton, qint32 tellerNumber) {
     connect(tellerButton, &QPushButton::clicked,
             [=](){
         if(this->circularQueue->isEmpty()) {
@@ -34,6 +38,16 @@ void BankQueueWindow::onDequeue(QPushButton* tellerButton, int tellerNumber) {
             this->lineEditList.at(this->circularQueue->getHead())->
                     setStyleSheet(tellerButton->styleSheet());
             const auto currentQueueNumber = this->circularQueue->dequeue();
+
+            Teller teller = Teller(tellerNumber, currentQueueNumber,
+                                        QDateTime::currentDateTime());
+            QFile file("teller.log");
+            file.open(QIODevice::WriteOnly | QIODevice::Append);
+            QDataStream out(&file);
+            out.setVersion(QDataStream::Qt_5_5);
+            out << teller;
+            file.flush();
+            file.close();
             ui->queueLcdNumber->display(currentQueueNumber);
             ui->tellerLcdNumber->display(tellerNumber);
             ui->tellerLcdNumber->setStyleSheet(tellerButton->styleSheet());

@@ -23,9 +23,9 @@ private:
     Ui::BankQueueWindow *ui;
     int queueNumber;
     QList<QLineEdit*> lineEditList;
-    CircularQueue<int> *circularQueue;
+    CircularQueue<qint32> *circularQueue;
     void showMessage(QString message);
-    void onDequeue(QPushButton *tellerButton, int tellerNumber);
+    void onDequeue(QPushButton *tellerButton, qint32 tellerNumber);
 };
 
 #endif // MAINWINDOW_H
