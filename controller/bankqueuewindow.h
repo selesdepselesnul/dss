@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul/)
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -6,7 +9,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include "util/queue.h"
-
 namespace Ui {
 class BankQueueWindow;
 }

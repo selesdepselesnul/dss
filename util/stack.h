@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #ifndef STACK_H
 #define STACK_H
 

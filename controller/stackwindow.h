@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #ifndef STACKWINDOW_H
 #define STACKWINDOW_H
 

@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #include "stackwindow.h"
 #include "ui_stackwindow.h"
 #include <QLineEdit>

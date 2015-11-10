@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #include "controller/stackwindow.h"
 #include "controller/queuewindow.h"
 #include "controller/bankqueuewindow.h"

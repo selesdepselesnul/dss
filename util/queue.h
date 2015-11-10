@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #ifndef QUEUE_H
 #define QUEUE_H
 #include <QDebug>

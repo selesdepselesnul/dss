@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #ifndef QUEUEWINDOW_H
 #define QUEUEWINDOW_H
 
@@ -7,7 +10,6 @@
 #include <QString>
 #include <QPoint>
 #include "util/queue.h"
-
 namespace Ui {
 class QueueWindow;
 }

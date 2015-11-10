@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #include "controller/queuewindow.h"
 #include "ui_queuewindow.h"
 #include <QDebug>

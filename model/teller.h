@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #ifndef TELLER
 #define TELLER
 #include <QObject>

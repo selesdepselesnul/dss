@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #include "ui_bankqueuewindow.h"
 #include <QPushButton>
 #include <QDebug>
