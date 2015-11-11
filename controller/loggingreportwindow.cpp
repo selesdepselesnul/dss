@@ -1,3 +1,6 @@
+/**
+ * author : Moch Deden (https://github.com/selesdepselesnul)
+ */
 #include "loggingreportwindow.h"
 #include "ui_loggingreportwindow.h"
 #include "model/teller.h"
