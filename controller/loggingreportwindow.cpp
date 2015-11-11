@@ -5,6 +5,7 @@
 #include <QDataStream>
 #include <QIODevice>
 #include <QDebug>
+#include <QTextCursor>
 
 LoggingReportWindow::LoggingReportWindow(QWidget *parent) :
     QWidget(parent),
@@ -19,8 +20,17 @@ LoggingReportWindow::LoggingReportWindow(QWidget *parent) :
     while (!in.atEnd()) {
         auto teller = Teller();
         in >> teller;
-        qDebug() << teller.tellerNumber << '\n' << teller.queueNumber << '\n'
-               << teller.servedDateTime << '\n';
+        ui->loggingText->moveCursor (QTextCursor::End);
+        ui->loggingText->insertPlainText ("No. teller = "
+                                          + QString::number(teller.tellerNumber)
+                                          + '\n');
+        ui->loggingText->insertPlainText ("No. queue = "
+                                          + QString::number(teller.queueNumber)
+                                          + '\n');
+        ui->loggingText->insertPlainText ("Tanggal log = " +
+                  teller.servedDateTime.toLocalTime().toString()
+                                          + "\n\n");
+        ui->loggingText->moveCursor(QTextCursor::End);
     }
     file.close();
 }
