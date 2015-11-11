@@ -7,10 +7,13 @@
 #include <QDateTime>
 #include <QFile>
 #include <QDataStream>
+#include <QString>
 
 
 class Teller {
 public:
+    static const QString LOG_FILE;
+
     Teller() {};
 
     Teller(qint32 tellerNumber, qint32 queueNumber, QDateTime servedDateTime) {
@@ -22,17 +25,25 @@ public:
     qint32 tellerNumber;
     qint32 queueNumber;
     QDateTime servedDateTime;
+    friend QDataStream &operator << (QDataStream &stream, const Teller &teller) {
+
+        stream<< teller.tellerNumber;
+        stream<< teller.queueNumber;
+        stream<< teller.servedDateTime;
+
+        return stream;
+
+    }
+    friend QDataStream &operator >> (QDataStream &stream, Teller &teller) {
+
+        stream >> teller.tellerNumber;
+        stream >> teller.queueNumber;
+        stream >> teller.servedDateTime;
+        return stream;
+
+    }
 };
 
-QDataStream & operator <<(QDataStream &out, const Teller &teller) {
-    return out << teller.tellerNumber << teller.queueNumber
-               << teller.servedDateTime;
-}
-
-QDataStream &operator>>(QDataStream &in, Teller &teller) {
-    return in >> teller.tellerNumber >> teller.queueNumber
-              >> teller.servedDateTime;
-}
 
 
 #endif // TELLER

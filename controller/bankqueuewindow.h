@@ -21,6 +21,7 @@ public:
     explicit BankQueueWindow();
 private slots:
     void onGetQueueNumberButtonClicked();
+    void onSeeingLogButtonClicked();
 private:
     Ui::BankQueueWindow *ui;
     int queueNumber;

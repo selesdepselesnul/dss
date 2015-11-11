@@ -16,7 +16,9 @@ TEMPLATE = app
 SOURCES += main.cpp \
     controller/stackwindow.cpp \
     controller/queuewindow.cpp \
-    controller/bankqueuewindow.cpp
+    controller/bankqueuewindow.cpp \
+    controller/loggingreportwindow.cpp \
+    model/teller.cpp
 
 HEADERS  += \
     util/stack.h \
@@ -24,12 +26,14 @@ HEADERS  += \
     controller/stackwindow.h \
     controller/queuewindow.h \
     controller/bankqueuewindow.h \
-    model/teller.h
+    model/teller.h \
+    controller/loggingreportwindow.h
 
 FORMS    += \
     ui/stackwindow.ui \
     ui/queuewindow.ui \
-    ui/bankqueuewindow.ui
+    ui/bankqueuewindow.ui \
+    controller/loggingreportwindow.ui
 
 RESOURCES += \
     dss_icon.qrc

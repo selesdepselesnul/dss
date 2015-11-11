@@ -10,8 +10,9 @@
 #include <QIODevice>
 #include <algorithm>
 #include "util/queue.h"
+#include "model/teller.h"
 #include "controller/bankqueuewindow.h"
-#include "teller.h"
+#include "controller/loggingreportwindow.h"
 
 BankQueueWindow::BankQueueWindow() :
     ui(new Ui::BankQueueWindow) {
@@ -25,6 +26,9 @@ BankQueueWindow::BankQueueWindow() :
 
     connect(ui->getQueueNumberButton, &QPushButton::clicked,
             this, &BankQueueWindow::onGetQueueNumberButtonClicked);
+
+    connect(ui->seeingLogButton, &QPushButton::clicked,
+            this, &BankQueueWindow::onSeeingLogButtonClicked);
 
     onDequeue(ui->teller1Button, 1);
     onDequeue(ui->teller2Button, 2);
@@ -44,7 +48,7 @@ void BankQueueWindow::onDequeue(QPushButton* tellerButton, qint32 tellerNumber) 
 
             Teller teller = Teller(tellerNumber, currentQueueNumber,
                                         QDateTime::currentDateTime());
-            QFile file("teller.log");
+            QFile file(Teller::LOG_FILE);
             file.open(QIODevice::WriteOnly | QIODevice::Append);
             QDataStream out(&file);
             out.setVersion(QDataStream::Qt_5_5);
@@ -87,6 +91,14 @@ void BankQueueWindow::onGetQueueNumberButtonClicked() {
         showMessage("Antrian penuh");
 
     }
+}
+
+void BankQueueWindow::onSeeingLogButtonClicked() {
+    qDebug() << "You click loggin button";
+    auto loggingReportWindow = new LoggingReportWindow();
+    loggingReportWindow->show();
+    loggingReportWindow->setWindowTitle("Laporan Log");
+    loggingReportWindow->setWindowModality(Qt::ApplicationModal);
 }
 
 void BankQueueWindow::showMessage(QString message) {

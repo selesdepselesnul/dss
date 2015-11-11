@@ -396,7 +396,7 @@ color: rgb(255, 255, 255);</string>
      <string>tail</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="seeingLogButton">
     <property name="geometry">
      <rect>
       <x>470</x>
