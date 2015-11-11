@@ -97,6 +97,8 @@ void BankQueueWindow::onSeeingLogButtonClicked() {
     qDebug() << "You click loggin button";
     auto loggingReportWindow = new LoggingReportWindow();
     loggingReportWindow->setWindowTitle("Laporan Log");
+    loggingReportWindow->setFixedWidth(400);
+    loggingReportWindow->setFixedHeight(300);
     loggingReportWindow->setWindowModality(Qt::ApplicationModal);
     loggingReportWindow->show();
 }
